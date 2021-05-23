@@ -1,5 +1,5 @@
 // The MIT License (MIT)
-// Copyright © 2020 Ivan Vorobei (hello@ivanvorobei.by)
+// Copyright © 2021 Ivan Vorobei (hello@ivanvorobei.by)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
 
-class RootController: SPController {}
+public protocol SPIndicatorIconAnimatable {
+    
+    func animate()
+}

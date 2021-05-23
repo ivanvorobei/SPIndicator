@@ -9,6 +9,15 @@
           "revision": "fe41eb5dfeab866eaecb414c352fef9e4dd95f3b",
           "version": "3.0.8"
         }
+      },
+      {
+        "package": "SPDiffable",
+        "repositoryURL": "https://github.com/ivanvorobei/SPDiffable",
+        "state": {
+          "branch": null,
+          "revision": "3136eaab42a982bf28ed7f9d004304c90ffa8ad8",
+          "version": "1.2.4"
+        }
       }
     ]
   },

@@ -10,7 +10,9 @@
 		F43F829D26578DCA001D9B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43F829426578DCA001D9B3D /* Assets.xcassets */; };
 		F43F829E26578DCA001D9B3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43F829526578DCA001D9B3D /* LaunchScreen.storyboard */; };
 		F43F829F26578DCA001D9B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F829726578DCA001D9B3D /* AppDelegate.swift */; };
-		F43F82A126578DCA001D9B3D /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F829B26578DCA001D9B3D /* RootController.swift */; };
+		F43F82A126578DCA001D9B3D /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F829B26578DCA001D9B3D /* PresetsController.swift */; };
+		F4B96F99265AC34400A01A29 /* SPDiffable in Frameworks */ = {isa = PBXBuildFile; productRef = F4B96F98265AC34400A01A29 /* SPDiffable */; };
+		F4B96F9C265AC36F00A01A29 /* IndicatorPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96F9B265AC36F00A01A29 /* IndicatorPresetModel.swift */; };
 		F4BAA4352658292F00DA5BF7 /* SparrowKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4342658292F00DA5BF7 /* SparrowKit */; };
 		F4BAA4372658293600DA5BF7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4362658293600DA5BF7 /* SPIndicator */; };
 		F4BAA4392658293F00DA5BF7 /* SparrowKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4382658293F00DA5BF7 /* SparrowKit */; };
@@ -38,11 +40,12 @@
 		F43F829426578DCA001D9B3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F43F829626578DCA001D9B3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F43F829726578DCA001D9B3D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F43F829B26578DCA001D9B3D /* RootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
+		F43F829B26578DCA001D9B3D /* PresetsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetsController.swift; sourceTree = "<group>"; };
 		F43F829C26578DCA001D9B3D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43F82AB26578F03001D9B3D /* tvOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43F82B926578F04001D9B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43F83452658286B001D9B3D /* SPIndicator */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SPIndicator; path = ..; sourceTree = "<group>"; };
+		F4B96F9B265AC36F00A01A29 /* IndicatorPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorPresetModel.swift; sourceTree = "<group>"; };
 		F4BAA43D2658297300DA5BF7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4BAA43E2658297300DA5BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4BAA43F2658297300DA5BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B96F99265AC34400A01A29 /* SPDiffable in Frameworks */,
 				F4BAA4352658292F00DA5BF7 /* SparrowKit in Frameworks */,
 				F4BAA4372658293600DA5BF7 /* SPIndicator in Frameworks */,
 			);
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				F43F829326578DCA001D9B3D /* App */,
+				F4B96F9A265AC36800A01A29 /* Models */,
 				F43F829A26578DCA001D9B3D /* Scenes */,
 				F43F829C26578DCA001D9B3D /* Info.plist */,
 			);
@@ -113,7 +118,7 @@
 		F43F829A26578DCA001D9B3D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F43F829B26578DCA001D9B3D /* RootController.swift */,
+				F43F829B26578DCA001D9B3D /* PresetsController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -132,6 +137,14 @@
 				F43F82B926578F04001D9B3D /* Info.plist */,
 			);
 			path = "tvOS Example";
+			sourceTree = "<group>";
+		};
+		F4B96F9A265AC36800A01A29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4B96F9B265AC36F00A01A29 /* IndicatorPresetModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F4BAA43C2658297300DA5BF7 /* App */ = {
@@ -164,6 +177,7 @@
 			packageProductDependencies = (
 				F4BAA4342658292F00DA5BF7 /* SparrowKit */,
 				F4BAA4362658293600DA5BF7 /* SPIndicator */,
+				F4B96F98265AC34400A01A29 /* SPDiffable */,
 			);
 			productName = SparrowKit;
 			productReference = F43F827B26578D83001D9B3D /* iOS Example.app */;
@@ -218,6 +232,7 @@
 			mainGroup = F43F827226578D83001D9B3D;
 			packageReferences = (
 				F4BAA4332658292F00DA5BF7 /* XCRemoteSwiftPackageReference "SparrowKit" */,
+				F4B96F97265AC34400A01A29 /* XCRemoteSwiftPackageReference "SPDiffable" */,
 			);
 			productRefGroup = F43F827C26578D83001D9B3D /* Products */;
 			projectDirPath = "";
@@ -255,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43F82A126578DCA001D9B3D /* RootController.swift in Sources */,
+				F43F82A126578DCA001D9B3D /* PresetsController.swift in Sources */,
+				F4B96F9C265AC36F00A01A29 /* IndicatorPresetModel.swift in Sources */,
 				F43F829F26578DCA001D9B3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,14 +420,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T9Z76HLJ3T;
+				DEVELOPMENT_TEAM = NPYZ6A48AA;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = by.ivanvorobei.sparrowkit.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = by.ivanvorobei.spperspective;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,14 +440,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T9Z76HLJ3T;
+				DEVELOPMENT_TEAM = NPYZ6A48AA;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = by.ivanvorobei.sparrowkit.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = by.ivanvorobei.spperspective;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -513,6 +529,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F4B96F97265AC34400A01A29 /* XCRemoteSwiftPackageReference "SPDiffable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPDiffable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.4;
+			};
+		};
 		F4BAA4332658292F00DA5BF7 /* XCRemoteSwiftPackageReference "SparrowKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SparrowKit";
@@ -524,6 +548,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F4B96F98265AC34400A01A29 /* SPDiffable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B96F97265AC34400A01A29 /* XCRemoteSwiftPackageReference "SPDiffable" */;
+			productName = SPDiffable;
+		};
 		F4BAA4342658292F00DA5BF7 /* SparrowKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4BAA4332658292F00DA5BF7 /* XCRemoteSwiftPackageReference "SparrowKit" */;
