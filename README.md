@@ -53,7 +53,7 @@ pod 'SPIndicator'
 
 ### Manually
 
-If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SparrowKit` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
+If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SPIndicator` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
 <img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="270"/>
 
