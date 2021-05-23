@@ -1,6 +1,6 @@
 # SPIndicator
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.12.jpg" width="360"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.12.jpg" width="380"/>
 
 ### About
 
