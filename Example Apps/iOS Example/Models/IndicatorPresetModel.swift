@@ -30,7 +30,7 @@ struct IndicatorPresetModel {
     var name: String
     var title: String
     var message: String?
-    var preset: SPIndicatorIconPreset
+    var preset: SPIndicatorIconPreset?
     
     var id: String {
         return name
