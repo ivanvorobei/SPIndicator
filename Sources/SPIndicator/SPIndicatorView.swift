@@ -27,7 +27,7 @@ class SPIndicatorView: UIView {
     
     // MARK: - Properties
     
-    open var dismissByTap: Bool = true
+    open var dismissByDrag: Bool = true
     open var completion: (() -> Void)? = nil
     
     // MARK: - Views
