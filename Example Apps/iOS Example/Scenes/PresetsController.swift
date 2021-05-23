@@ -61,7 +61,12 @@ class PresetsController: SPDiffableTableController {
             .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             .init(systemItem: .play, primaryAction: .init(handler: { [weak self] (action) in
                 guard let preset = self?.currentPreset else { return }
-                SPIndicator.present(title: preset.title, message: preset.message, preset: preset.preset, completion: nil)
+                if preset.message == nil && preset.preset == nil {
+                    SPIndicator.present(message: preset.title, haptic: .success)
+                } else {
+                    SPIndicator.present(title: preset.title, message: preset.message, preset: preset.preset!, completion: nil)
+                }
+                
             }), menu: nil),
             .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
         ]
@@ -94,6 +99,12 @@ class PresetsController: SPDiffableTableController {
                 title: "Specific Tint",
                 message: "For any image",
                 preset: .custom(UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal))
+            ),
+            IndicatorPresetModel(
+                name: "Message",
+                title: "Only Title",
+                message: nil,
+                preset: nil
             ),
         ]
     }

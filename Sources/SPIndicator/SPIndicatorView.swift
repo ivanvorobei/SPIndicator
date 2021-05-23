@@ -65,9 +65,11 @@ class SPIndicatorView: UIView {
     
     public init(message: String) {
         super.init(frame: CGRect.zero)
+        titleAreaFactor = 1.8
+        minimumAreaWidth = 100
         commonInit()
         layout = SPIndicatorLayout.message()
-        setMessage(message)
+        setTitle(message)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -101,7 +103,7 @@ class SPIndicatorView: UIView {
             string: text, attributes: [.paragraphStyle: style]
         )
         label.textAlignment = .center
-        label.textColor = UIColor.Compability.label.withAlphaComponent(0.5)
+        label.textColor = UIColor.Compability.label.withAlphaComponent(0.6)
         titleLabel = label
         addSubview(label)
     }
@@ -117,7 +119,7 @@ class SPIndicatorView: UIView {
             string: text, attributes: [.paragraphStyle: style]
         )
         label.textAlignment = .center
-        label.textColor = UIColor.Compability.label.withAlphaComponent(0.2)
+        label.textColor = UIColor.Compability.label.withAlphaComponent(0.3)
         subtitleLabel = label
         addSubview(label)
     }
@@ -146,6 +148,7 @@ class SPIndicatorView: UIView {
     private var areaHeight: CGFloat = 50
     private var minimumAreaWidth: CGFloat = 196
     private var maximumAreaWidth: CGFloat = 260
+    private var titleAreaFactor: CGFloat = 2.5
     private var spaceBetweenTitles: CGFloat = 1
     private var spaceBetweenTitlesAndImage: CGFloat = 16
     
@@ -172,7 +175,7 @@ class SPIndicatorView: UIView {
         let titleWidth: CGFloat = titleLabel?.frame.width ?? 0
         subtitleLabel?.sizeToFit()
         let subtitleWidth: CGFloat = subtitleLabel?.frame.width ?? 0
-        var width = (max(titleWidth, subtitleWidth) * 2.5).rounded()
+        var width = (max(titleWidth, subtitleWidth) * titleAreaFactor).rounded()
         
         if width < minimumAreaWidth { width = minimumAreaWidth }
         if width > maximumAreaWidth { width = maximumAreaWidth }
