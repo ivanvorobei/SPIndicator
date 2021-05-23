@@ -1,6 +1,6 @@
-# SPIndicator
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.png" width="220"/>
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.png" width="280"/>
+# SPIndicator
 
 Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts. If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
