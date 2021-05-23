@@ -55,14 +55,14 @@ pod 'SPIndicator'
 
 If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SparrowKit` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
-<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="250"/>
-
 ## Quick Start
+
+<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="270"/>
 
 For best experience, I recommend presenting alerts by calling the class functions `SPIndicator`. These functions are updated regularly and show the alerts as Apple way: 
 
 ```swift
-SPIndicator.present(title: "Done", message: "Confirmed", preset: .done)
+SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
 ```
 
 For using a custom image:
@@ -71,8 +71,6 @@ For using a custom image:
 let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
-
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="250"/>
 
 ## Usage
 
@@ -101,6 +99,8 @@ By default allow drag alert for hide. This can be disabled:
 ```swift
 indicatorView.dismissByDrag = false
 ```
+
+<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="270"/>
 
 ### Haptic
 
