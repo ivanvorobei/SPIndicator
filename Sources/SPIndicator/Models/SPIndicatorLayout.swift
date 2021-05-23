@@ -20,14 +20,21 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
 
-@UIApplicationMain
-class AppDelegate: SPAppWindowDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootController = PresetsController().wrapToNavigationController(prefersLargeTitles: false)
-        makeKeyAndVisible(rootController, tint: .systemBlue)
-        return true
+open class SPIndicatorLayout {
+    
+    /**
+     SPIndicator: Icon size.
+     */
+    open var iconSize: CGSize
+    
+    /**
+     SPIndicator: Alert margings for each side.
+     */
+    open var margins: UIEdgeInsets
+    
+    public init(iconSize: CGSize, margins: UIEdgeInsets) {
+        self.iconSize = iconSize
+        self.margins = margins
     }
 }

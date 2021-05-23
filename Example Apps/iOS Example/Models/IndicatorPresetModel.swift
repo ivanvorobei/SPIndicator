@@ -20,14 +20,19 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
+import SPIndicator
 
-@UIApplicationMain
-class AppDelegate: SPAppWindowDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootController = PresetsController().wrapToNavigationController(prefersLargeTitles: false)
-        makeKeyAndVisible(rootController, tint: .systemBlue)
-        return true
+/**
+ Example wrapper model.
+ */
+struct IndicatorPresetModel {
+    
+    var name: String
+    var title: String
+    var message: String?
+    var preset: SPIndicatorIconPreset
+    
+    var id: String {
+        return name
     }
 }

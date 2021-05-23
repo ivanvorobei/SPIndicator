@@ -20,14 +20,29 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
 
-@UIApplicationMain
-class AppDelegate: SPAppWindowDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootController = PresetsController().wrapToNavigationController(prefersLargeTitles: false)
-        makeKeyAndVisible(rootController, tint: .systemBlue)
-        return true
+public enum SPIndicatorHaptic {
+    
+    case success
+    case warning
+    case error
+    case none
+    
+    func impact() {
+        #if os(iOS)
+        let generator = UINotificationFeedbackGenerator()
+        switch self {
+        case .success:
+            generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
+        case .warning:
+            generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.warning)
+        case .error:
+            generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+        case .none:
+            break
+        }
+        #endif
     }
 }
+
+

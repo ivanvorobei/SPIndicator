@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/ivanvorobei/Dropbox/Projects/GitHub/SPIndicator/Example Apps/SPIndicator.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -1,5 +1,7 @@
 # SPIndicator
 
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.png" width="500"/>
+
 Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts.
 
 If you like the project, don't forget to `put star ★` and follow me on GitHub:

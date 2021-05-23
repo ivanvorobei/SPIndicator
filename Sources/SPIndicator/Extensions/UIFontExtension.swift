@@ -20,14 +20,13 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
 
-@UIApplicationMain
-class AppDelegate: SPAppWindowDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootController = PresetsController().wrapToNavigationController(prefersLargeTitles: false)
-        makeKeyAndVisible(rootController, tint: .systemBlue)
-        return true
+extension UIFont {
+    
+    static func preferredFont(forTextStyle style: TextStyle, weight: Weight, addPoints: CGFloat = 0) -> UIFont {
+        let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
+        let font = UIFont.systemFont(ofSize: descriptor.pointSize + addPoints, weight: weight)
+        let metrics = UIFontMetrics(forTextStyle: style)
+        return metrics.scaledFont(for: font)
     }
 }

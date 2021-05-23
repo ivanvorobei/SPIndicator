@@ -20,14 +20,10 @@
 // SOFTWARE.
 
 import UIKit
-import SparrowKit
 
-@UIApplicationMain
-class AppDelegate: SPAppWindowDelegate {
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootController = PresetsController().wrapToNavigationController(prefersLargeTitles: false)
-        makeKeyAndVisible(rootController, tint: .systemBlue)
-        return true
+extension UIApplication {
+    
+    var userInterfaceRightToLeft: Bool {
+        UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
 }
