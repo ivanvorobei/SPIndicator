@@ -1,6 +1,6 @@
 # SPIndicator
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.jpg" width="400"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.jpg" width="400"/>
 
 Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts. If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
@@ -51,6 +51,8 @@ pod 'SPIndicator'
 
 If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SparrowKit` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
+<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.jpg" width="250"/>
+
 ## Quick Start
 
 For best experience, I recommend presenting alerts by calling the class functions `SPIndicator`. These functions are updated regularly and show the alerts as Apple way: 
@@ -65,6 +67,8 @@ For using a custom image:
 let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
+
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.jpg" width="250"/>
 
 ## Usage
 
