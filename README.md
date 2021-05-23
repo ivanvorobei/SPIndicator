@@ -1,6 +1,8 @@
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.11.jpg" width="360"/>
-
 # SPIndicator
+
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.12.jpg" width="360"/>
+
+### About
 
 Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images, you can see how use it in docs.
 
