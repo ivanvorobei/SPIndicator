@@ -2,7 +2,7 @@
 
 # SPIndicator
 
-Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`. Will add more in future. Also support custom images, you can see how use it in documentation.
+Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`. Will add more in future. Also support custom images, you can see how use it in docs.
 
 If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
