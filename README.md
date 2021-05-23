@@ -2,7 +2,9 @@
 
 # SPIndicator
 
-Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts. If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
+Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`. Will add more in future. Also support custom images, you can see how use it in documentation.
+
+If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
 If you like the project, don't forget to `put star ★` and follow me on GitHub:
 
