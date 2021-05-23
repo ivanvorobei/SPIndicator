@@ -1,8 +1,8 @@
 # SPIndicator
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.png" width="500"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.png" width="280"/>
 
-Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts.
+Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts. If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
 If you like the project, don't forget to `put star ★` and follow me on GitHub:
 
@@ -14,6 +14,12 @@ If you like the project, don't forget to `put star ★` and follow me on GitHub:
     - [Swift Package Manager](#swift-package-manager)
     - [CocoaPods](#cocoapods)
     - [Manually](#manually)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+    - [Duration](#duration)
+    - [Layout](#layout)
+    - [Dismiss by Drag](#dismiss-by-drag)
+    - [Haptic](#haptic)
 - [Other Projects](#other-projects)
 - [Russian Community](#russian-community)
 
@@ -44,6 +50,59 @@ pod 'SPIndicator'
 ### Manually
 
 If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SparrowKit` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
+
+## Quick Start
+
+For best experience, I recommend presenting alerts by calling the class functions `SPIndicator`. These functions are updated regularly and show the alerts as Apple way: 
+
+```swift
+SPIndicator.present(title: "Done", message: "Confirmed", preset: .done)
+```
+
+For using a custom image:
+
+```swift 
+let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
+```
+
+## Usage
+
+### Duration
+
+For change duration of present time, create alert view and call `present` method with custom duration:
+
+```swift
+let indicatorView = SPIndicatorView(title: "Complete", message preset: .done)
+indicatorView.present(duration: 3)
+```
+
+### Layout
+
+For customise layout and margins, use `layout` property. You can manage margins for each side, icon size and space between image and titles:
+
+```swift
+indicatorView.layout.iconSize = .init(width: 24, height: 24)
+indicatorView.layout.margins.top = 12
+```
+
+### Dismiss by Drag
+
+By default allow drag alert for hide. This can be disabled:
+
+```swift
+indicatorView.dismissByDrag = false
+```
+
+### Haptic
+
+For manage haptic, you shoud pass it in present method:
+
+```swift
+alertView.present(duration: 1.5, haptic: .success, completion: nil)
+```
+
+You can remove duration and completion, its have default values.
 
 ## Other Projects
 
