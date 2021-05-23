@@ -1,6 +1,6 @@
-# SPIndicator
-
 <img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.jpg" width="400"/>
+
+# SPIndicator
 
 Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts. If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
@@ -68,7 +68,7 @@ let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYello
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.jpg" width="250"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.jpg" width="250"/>
 
 ## Usage
 
