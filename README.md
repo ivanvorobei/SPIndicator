@@ -1,4 +1,4 @@
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview.svg" width="260"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview1.5.jpg" width="260"/>
 
 # SPIndicator
 
