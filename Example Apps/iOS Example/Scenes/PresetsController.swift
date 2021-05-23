@@ -40,7 +40,7 @@ class PresetsController: SPDiffableTableController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "SPAlert Presets"
+        navigationItem.title = "SPIndicator Presets"
         
         currentPreset = presets.first!
         setCellProviders(SPDiffableTableCellProviders.default, sections: content)
