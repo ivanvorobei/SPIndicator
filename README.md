@@ -1,6 +1,6 @@
 # SPIndicator
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.12.jpg" width="380"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.jpg" width="380"/>
 
 ### About
 
@@ -79,7 +79,7 @@ SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .
 For change duration of present time, create alert view and call `present` method with custom duration:
 
 ```swift
-let indicatorView = SPIndicatorView(title: "Complete", message preset: .done)
+let indicatorView = SPIndicatorView(title: "Complete", preset: .done)
 indicatorView.present(duration: 3)
 ```
 
