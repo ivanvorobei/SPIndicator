@@ -55,9 +55,9 @@ pod 'SPIndicator'
 
 If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SparrowKit` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
-## Quick Start
-
 <img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="270"/>
+
+## Quick Start
 
 For best experience, I recommend presenting alerts by calling the class functions `SPIndicator`. These functions are updated regularly and show the alerts as Apple way: 
 
@@ -100,7 +100,7 @@ By default allow drag alert for hide. This can be disabled:
 indicatorView.dismissByDrag = false
 ```
 
-<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="270"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="270"/>
 
 ### Haptic
 
