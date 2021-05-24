@@ -27,8 +27,17 @@ class SPIndicatorView: UIView {
     
     // MARK: - Properties
     
-    open var dismissByDrag: Bool = true
+    open var dismissByDrag: Bool = true {
+        didSet {
+            setGester()
+        }
+    }
+    
     open var completion: (() -> Void)? = nil
+    
+    private var gestureRecognizer: UIPanGestureRecognizer?
+    private var gesterIsDragging: Bool = false
+    private var whenGesterEndShoudHide: Bool = false
     
     // MARK: - Views
     
@@ -87,7 +96,8 @@ class SPIndicatorView: UIView {
         backgroundView.layer.masksToBounds = true
         addSubview(backgroundView)
         
-        updateShadow()
+        setShadow()
+        setGester()
     }
     
     // MARK: - Configure
@@ -130,7 +140,7 @@ class SPIndicatorView: UIView {
         addSubview(view)
     }
     
-    private func updateShadow() {
+    private func setShadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.22
         layer.shadowOffset = .init(width: 0, height: 7)
@@ -139,6 +149,125 @@ class SPIndicatorView: UIView {
         // Not use render shadow becouse backgorund is visual effect.
         // If turn on it, background will hide.
         // layer.shouldRasterize = true
+    }
+    
+    private func setGester() {
+        if dismissByDrag {
+            let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+            addGestureRecognizer(gestureRecognizer)
+            self.gestureRecognizer = gestureRecognizer
+        } else {
+            self.gestureRecognizer = nil
+        }
+    }
+    
+    // MARK: - Present
+    
+    private var presentAndDismissDuration: TimeInterval = 0.6
+    
+    open func present(duration: TimeInterval = 1.5, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
+        guard let window = self.presentWindow else { return }
+        
+        window.addSubview(self)
+        
+        // Prepare for present
+        
+        self.whenGesterEndShoudHide = false
+        self.completion = completion
+        
+        isHidden = true
+        sizeToFit()
+        layoutSubviews()
+        center.x = window.frame.midX
+        toPresentPosition(.prepare)
+        
+        // Present
+        
+        isHidden = false
+        haptic.impact()
+        UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
+            self.toPresentPosition(.visible)
+        }, completion: { finished in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
+                if self.gesterIsDragging {
+                    self.whenGesterEndShoudHide = true
+                } else {
+                    self.dismiss()
+                }
+            }
+        })
+        
+        if let iconView = self.iconView as? SPIndicatorIconAnimatable {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + presentAndDismissDuration / 3) {
+                iconView.animate()
+            }
+        }
+    }
+    
+    @objc open func dismiss() {
+        UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
+            self.toPresentPosition(.prepare)
+        }, completion: { finished in
+            self.removeFromSuperview()
+            self.completion?()
+        })
+    }
+    
+    // MARK: - Internal
+    
+    private var minimumYTranslationForHideByGester: CGFloat = -10
+    private var maxmiumYTranslationByGester: CGFloat = 60
+    
+    @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            self.gesterIsDragging = true
+            let translation = gestureRecognizer.translation(in: self)
+            let newTranslation: CGFloat = {
+                if translation.y <= 0 {
+                    return translation.y
+                } else {
+                    return min(maxmiumYTranslationByGester, translation.y.squareRoot())
+                }
+            }()
+            toPresentPosition(.fromVisible(newTranslation))
+        }
+        
+        if gestureRecognizer.state == .ended {
+            gesterIsDragging = false
+            
+            UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
+                if self.whenGesterEndShoudHide {
+                    self.toPresentPosition(.prepare)
+                } else {
+                    let translation = gestureRecognizer.translation(in: self)
+                    if translation.y < self.minimumYTranslationForHideByGester {
+                        self.toPresentPosition(.prepare)
+                    } else {
+                        self.toPresentPosition(.visible)
+                    }
+                }
+            }, completion: nil)
+        }
+    }
+    
+    private func toPresentPosition(_ position: PresentPosition) {
+        switch position {
+        case .prepare:
+            let position = -((UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0) + 50)
+            transform = CGAffineTransform.identity.translatedBy(x: 0, y: position)
+        case .visible:
+            transform = visibleTranform
+        case .fromVisible(let value):
+            transform = visibleTranform.translatedBy(x: 0, y: value)
+        }
+    }
+    
+    private var visibleTranform: CGAffineTransform {
+        var topSafeAreaInsets = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+        if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
+        let position = topSafeAreaInsets - 3
+        return CGAffineTransform.identity.translatedBy(x: 0, y: position)
     }
     
     // MARK: - Layout
@@ -237,61 +366,13 @@ class SPIndicatorView: UIView {
         }
     }
     
-    // MARK: - Present
+    // MARK: - Models
     
-    fileprivate var presentAndDismissDuration: TimeInterval = 0.6
-    
-    fileprivate var startPresentPosition: CGFloat {
-        -((UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0) + 50)
-    }
-    
-    fileprivate var endPresentPosition: CGFloat {
-        var topSafeAreaInsets = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-        if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
-        return topSafeAreaInsets - 3
-    }
-    
-    open func present(duration: TimeInterval = 1.5, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
-        guard let window = self.presentWindow else { return }
+    enum PresentPosition {
         
-        window.addSubview(self)
-        
-        // Prepare for present
-        
-        self.completion = completion
-        
-        isHidden = true
-        sizeToFit()
-        layoutSubviews()
-        center.x = window.frame.midX
-        transform = CGAffineTransform.identity.translatedBy(x: 0, y: startPresentPosition)
-        
-        // Present
-        
-        isHidden = false
-        haptic.impact()
-        UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
-            self.transform = CGAffineTransform.identity.translatedBy(x: 0, y: self.endPresentPosition)
-        }, completion: { finished in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
-                self.dismiss()
-            }
-        })
-        
-        if let iconView = self.iconView as? SPIndicatorIconAnimatable {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + presentAndDismissDuration / 3) {
-                iconView.animate()
-            }
-        }
-    }
-    
-    @objc open func dismiss() {
-        UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
-            self.transform = CGAffineTransform.identity.translatedBy(x: 0, y: self.startPresentPosition)
-        }, completion: { finished in
-            self.removeFromSuperview()
-            self.completion?()
-        })
+        case prepare
+        case visible
+        case fromVisible(_ translation: CGFloat)
     }
 }
 
