@@ -359,12 +359,8 @@ class SPIndicatorView: UIView {
             layout = .iconTitleMessageLeading
         }
         
-        if (hasIcon && hasTitle && !hasSubtite) && !notFitAnyLabelToCompact {
+        if (hasIcon && hasTitle && !hasSubtite) {
             layout = .iconTitleCentered
-        }
-        
-        if (hasIcon && hasTitle && !hasSubtite) && notFitAnyLabelToCompact {
-            layout = .iconTitleLeading
         }
         
         if (!hasIcon && hasTitle && !hasSubtite) {

@@ -114,7 +114,7 @@ class PresetsController: SPDiffableTableController {
             ),
             IndicatorPresetModel(
                 name: "Message Large Text with Icon",
-                title: "You can read it later when you have time. Saved to Bookmarks",
+                title: "You can read it later when you have time.",
                 message: nil,
                 preset: .custom(UIImage.init(systemName: "envelope.open.fill")!)
             ),
