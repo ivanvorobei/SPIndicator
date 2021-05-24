@@ -61,10 +61,10 @@ class PresetsController: SPDiffableTableController {
             .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             .init(systemItem: .play, primaryAction: .init(handler: { [weak self] (action) in
                 guard let preset = self?.currentPreset else { return }
-                if preset.message == nil && preset.preset == nil {
-                    SPIndicator.present(message: preset.title, haptic: .success)
+                if let iconPreset = preset.preset {
+                    SPIndicator.present(title: preset.title, message: preset.message, preset: iconPreset, completion: nil)
                 } else {
-                    SPIndicator.present(title: preset.title, message: preset.message, preset: preset.preset!, completion: nil)
+                    SPIndicator.present(title: preset.title, message: preset.message, haptic: .success)
                 }
                 
             }), menu: nil),
@@ -106,6 +106,24 @@ class PresetsController: SPDiffableTableController {
                 message: nil,
                 preset: nil
             ),
+            IndicatorPresetModel(
+                name: "Message with Subtitle",
+                title: "Title",
+                message: "Subtitle",
+                preset: nil
+            ),
+            IndicatorPresetModel(
+                name: "Message Large Text with Icon",
+                title: "You can read it later when you have time. Saved to Bookmarks",
+                message: nil,
+                preset: .custom(UIImage.init(systemName: "envelope.open.fill")!)
+            ),
+            IndicatorPresetModel(
+                name: "Message Large Text without Icon",
+                title: "You can read it later when you have time. Saved to Bookmarks",
+                message: nil,
+                preset: nil
+            )
         ]
     }
     

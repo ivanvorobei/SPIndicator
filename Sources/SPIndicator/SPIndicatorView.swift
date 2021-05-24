@@ -72,13 +72,16 @@ class SPIndicatorView: UIView {
         setIcon(for: preset)
     }
     
-    public init(message: String) {
+    public init(title: String, message: String?) {
         super.init(frame: CGRect.zero)
         titleAreaFactor = 1.8
         minimumAreaWidth = 100
         commonInit()
         layout = SPIndicatorLayout.message()
-        setTitle(message)
+        setTitle(title)
+        if let message = message {
+            setMessage(message)
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -293,7 +296,7 @@ class SPIndicatorView: UIView {
     private var titlesFullWidth: CGFloat {
         if let iconView = self.iconView {
             let space = iconView.frame.maxY + spaceBetweenTitlesAndImage
-            return frame.width - space - layoutMargins.right
+            return frame.width - space - layoutMargins.right - self.spaceBetweenTitlesAndImage
         } else {
             return frame.width - layoutMargins.left - layoutMargins.right
         }
@@ -316,54 +319,148 @@ class SPIndicatorView: UIView {
         super.layoutSubviews()
         
         layoutMargins = layout.margins
-        
         layer.cornerRadius = frame.height / 2
         backgroundView.frame = bounds
         backgroundView.layer.cornerRadius = layer.cornerRadius
         
-        if let iconView = self.iconView {
-            iconView.frame = .init(
-                origin: .init(x: layoutMargins.right, y: iconView.frame.origin.y),
-                size: layout.iconSize
-            )
-            iconView.center.y = bounds.midY
-        }
+        // Flags
         
-        if let titleLabel = self.titleLabel {
+        let hasIcon = (self.iconView != nil)
+        let hasTitle = (self.titleLabel != nil)
+        let hasSubtite = (self.subtitleLabel != nil)
+        
+        let fitTitleToCompact: Bool = {
+            guard let titleLabel = self.titleLabel else { return true }
+            titleLabel.numberOfLines = 1
             titleLabel.sizeToFit()
-            if titleLabel.frame.width > titlesCompactWidth {
-                titleLabel.textAlignment = UIApplication.shared.userInterfaceRightToLeft ? .right : .left
-                titleLabel.layoutDynamicHeight(width: titlesFullWidth)
-                titleLabel.frame.origin.x = layoutMargins.left + (iconView?.frame.width ?? 0) + spaceBetweenTitlesAndImage
-            } else {
-                titleLabel.textAlignment = .center
-                titleLabel.layoutDynamicHeight(width: titlesCompactWidth)
-                titleLabel.center.x = frame.width / 2
-            }
-        }
+            return titleLabel.frame.width < titlesCompactWidth
+        }()
         
-        if let subtitleLabel = self.subtitleLabel {
+        let fitSubtitleToCompact: Bool = {
+            guard let subtitleLabel = self.subtitleLabel else { return true }
+            subtitleLabel.numberOfLines = 1
             subtitleLabel.sizeToFit()
-            if subtitleLabel.frame.width > titlesCompactWidth {
-                subtitleLabel.textAlignment = UIApplication.shared.userInterfaceRightToLeft ? .right : .left
-                subtitleLabel.layoutDynamicHeight(width: titlesFullWidth)
-                subtitleLabel.frame.origin.x = layoutMargins.left + (iconView?.frame.width ?? 0) + spaceBetweenTitlesAndImage
-            } else {
-                subtitleLabel.textAlignment = .center
-                subtitleLabel.layoutDynamicHeight(width: titlesCompactWidth)
-                subtitleLabel.center.x = frame.width / 2
+            return subtitleLabel.frame.width < titlesCompactWidth
+        }()
+        
+        let notFitAnyLabelToCompact: Bool = {
+            if !fitTitleToCompact { return true }
+            if !fitSubtitleToCompact { return true }
+            return false
+        }()
+        
+        var layout: LayoutGrid = .iconTitleCentered
+        
+        if (hasIcon && hasTitle && hasSubtite) && !notFitAnyLabelToCompact {
+            layout = .iconTitleMessageCentered
+        }
+        
+        if (hasIcon && hasTitle && hasSubtite) && notFitAnyLabelToCompact {
+            layout = .iconTitleMessageLeading
+        }
+        
+        if (hasIcon && hasTitle && !hasSubtite) && !notFitAnyLabelToCompact {
+            layout = .iconTitleCentered
+        }
+        
+        if (hasIcon && hasTitle && !hasSubtite) && notFitAnyLabelToCompact {
+            layout = .iconTitleLeading
+        }
+        
+        if (!hasIcon && hasTitle && !hasSubtite) {
+            layout = .title
+        }
+        
+        if (!hasIcon && hasTitle && hasSubtite) {
+            layout = .titleMessage
+        }
+        
+        // Actions
+        
+        let layoutIcon = { [weak self] in
+            guard let self = self else { return }
+            guard let iconView = self.iconView else { return }
+            iconView.frame = .init(
+                origin: .init(x: self.layoutMargins.left, y: iconView.frame.origin.y),
+                size: self.layout.iconSize
+            )
+            iconView.center.y = self.bounds.midY
+        }
+        
+        let layoutTitleCenteredCompact = { [weak self] in
+            guard let self = self else { return }
+            guard let titleLabel = self.titleLabel else { return }
+            titleLabel.textAlignment = .center
+            titleLabel.layoutDynamicHeight(width: self.titlesCompactWidth)
+            titleLabel.center.x = self.frame.width / 2
+        }
+        
+        let layoutTitleCenteredFullWidth = { [weak self] in
+            guard let self = self else { return }
+            guard let titleLabel = self.titleLabel else { return }
+            titleLabel.textAlignment = .center
+            titleLabel.layoutDynamicHeight(width: self.titlesFullWidth)
+            titleLabel.center.x = self.frame.width / 2
+        }
+        
+        let layoutTitleLeadingFullWidth = { [weak self] in
+            guard let self = self else { return }
+            guard let titleLabel = self.titleLabel else { return }
+            guard let iconView = self.iconView else { return }
+            titleLabel.textAlignment = UIApplication.shared.userInterfaceRightToLeft ? .right : .left
+            titleLabel.layoutDynamicHeight(width: self.titlesFullWidth)
+            titleLabel.frame.origin.x = self.layoutMargins.left + iconView.frame.width + self.spaceBetweenTitlesAndImage
+        }
+        
+        let layoutSubtitle = { [weak self] in
+            guard let self = self else { return }
+            guard let titleLabel = self.titleLabel else { return }
+            guard let subtitleLabel = self.subtitleLabel else { return }
+            subtitleLabel.textAlignment = titleLabel.textAlignment
+            subtitleLabel.layoutDynamicHeight(width: titleLabel.frame.width)
+            subtitleLabel.frame.origin.x = titleLabel.frame.origin.x
+        }
+        
+        let layoutTitleSubtitleByVertical = { [weak self] in
+            guard let self = self else { return }
+            guard let titleLabel = self.titleLabel else { return }
+            guard let subtitleLabel = self.subtitleLabel else {
+                titleLabel.center.y = self.bounds.midY
+                return
             }
+            let allHeight = titleLabel.frame.height + subtitleLabel.frame.height + self.spaceBetweenTitles
+            titleLabel.frame.origin.y = (self.frame.height - allHeight) / 2
+            subtitleLabel.frame.origin.y = titleLabel.frame.maxY + self.spaceBetweenTitles
         }
         
-        if (titleLabel != nil) && (subtitleLabel == nil) {
-            titleLabel?.center.y = bounds.midY
+        // Apply
+        
+        switch layout {
+        case .iconTitleMessageCentered:
+            layoutIcon()
+            layoutTitleCenteredCompact()
+            layoutSubtitle()
+        case .iconTitleMessageLeading:
+            layoutIcon()
+            layoutTitleLeadingFullWidth()
+            layoutSubtitle()
+        case .iconTitleCentered:
+            layoutIcon()
+            titleLabel?.numberOfLines = 2
+            layoutTitleCenteredCompact()
+        case .iconTitleLeading:
+            layoutIcon()
+            titleLabel?.numberOfLines = 2
+            layoutTitleLeadingFullWidth()
+        case .title:
+            titleLabel?.numberOfLines = 2
+            layoutTitleCenteredFullWidth()
+        case .titleMessage:
+            layoutTitleCenteredFullWidth()
+            layoutSubtitle()
         }
         
-        if (titleLabel != nil) && (subtitleLabel != nil) {
-            let allHeight = (titleLabel?.frame.height ?? 0) + (subtitleLabel?.frame.height ?? 0) + spaceBetweenTitles
-            titleLabel?.frame.origin.y = (frame.height - allHeight) / 2
-            subtitleLabel?.frame.origin.y = (titleLabel?.frame.maxY ?? 0) + spaceBetweenTitles
-        }
+        layoutTitleSubtitleByVertical()
     }
     
     // MARK: - Models
@@ -373,6 +470,16 @@ class SPIndicatorView: UIView {
         case prepare
         case visible
         case fromVisible(_ translation: CGFloat)
+    }
+    
+    enum LayoutGrid {
+        
+        case iconTitleMessageCentered
+        case iconTitleMessageLeading
+        case iconTitleCentered
+        case iconTitleLeading
+        case title
+        case titleMessage
     }
 }
 
