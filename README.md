@@ -77,9 +77,9 @@ SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .
 For showing a simple text message:
 
 ```swift 
-SPIndicator.present(message: "Error", haptic: .error)
+SPIndicator.present(title: "Error", haptic: .error)
 ```
-Here requerid haptic for better user expierense.
+You can provide message optional too.
 
 ## Usage
 
