@@ -72,13 +72,14 @@ let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYello
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/message-only-preview.svg" width="220"/>
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/message-only-preview.svg" width="210"/>
 
 For showing a simple text message:
 
 ```swift 
 SPIndicator.present(message: "Error", haptic: .error)
 ```
+Here requerid haptic for better user expierense.
 
 ## Usage
 

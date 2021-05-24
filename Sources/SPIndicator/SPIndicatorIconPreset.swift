@@ -53,7 +53,7 @@ public extension SPIndicatorIconPreset {
         switch self {
         case .error: return .error
         case .done: return .success
-        case .custom(_): return .none
+        case .custom(_): return .success
         }
     }
 }
