@@ -72,6 +72,8 @@ let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYello
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
 
+<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="270"/>
+
 For showing a simple text message:
 
 ```swift 
@@ -105,8 +107,6 @@ By default allow drag alert for hide. While alert is dragging, dismiss not work.
 ```swift
 indicatorView.dismissByDrag = false
 ```
-
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/bookmarked-preview.svg" width="270"/>
 
 ### Haptic
 
