@@ -60,7 +60,7 @@ public enum SPIndicator {
      - parameter haptic: Haptic response with present. Default is `.success`.
      - parameter completion: Will call with dismiss alert.
      */
-    public static func present(title: String, message: String?, haptic: SPIndicatorHaptic, completion: (() -> Void)? = nil) {
+    public static func present(title: String, message: String? = nil, haptic: SPIndicatorHaptic, completion: (() -> Void)? = nil) {
         let alertView = SPIndicatorView(title: title, message: message)
         alertView.present(haptic: haptic, completion: completion)
     }
