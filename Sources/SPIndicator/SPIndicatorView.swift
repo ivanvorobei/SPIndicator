@@ -23,7 +23,7 @@ import UIKit
 
 #if os(iOS)
 
-class SPIndicatorView: UIView {
+open class SPIndicatorView: UIView {
     
     // MARK: - Properties
     
@@ -302,7 +302,7 @@ class SPIndicatorView: UIView {
         }
     }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
         titleLabel?.sizeToFit()
         let titleWidth: CGFloat = titleLabel?.frame.width ?? 0
         subtitleLabel?.sizeToFit()
@@ -315,7 +315,7 @@ class SPIndicatorView: UIView {
         return .init(width: width, height: areaHeight)
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         layoutMargins = layout.margins
