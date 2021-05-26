@@ -21,6 +21,10 @@
 
 import UIKit
 
+/**
+ SPIndicator: Represent icon wrapper.
+ Included default styles and can be custom image.
+ */
 public enum SPIndicatorIconPreset {
     
     case done
@@ -96,6 +100,8 @@ public extension SPIndicatorLayout {
             self.init()
         }
     }
+    
+    // Default values.
     
     private static var defaultIconSideSize: CGFloat { 28 }
     private static var defaultSpaceBetweenIconAndTitle: CGFloat { 26 }

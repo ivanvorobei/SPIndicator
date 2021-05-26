@@ -23,6 +23,18 @@ import UIKit
 
 #if os(iOS)
 
+/**
+ SPIndicator: Main view. Can be customisable if need.
+ 
+ For change duration, check method `present` and pass duration and other specific property if need customise.
+ 
+ Here available set window on which shoud be present.
+ If you have some windows, you shoud configure it. Check property `presentWindow`.
+ 
+ For disable dismiss by drag, check property `.dismissByDrag`.
+ 
+ Recomended call `SPIndicator` and choose style func.
+ */
 open class SPIndicatorView: UIView {
     
     // MARK: - Properties

@@ -21,6 +21,9 @@
 
 import UIKit
 
+/**
+ SPIndicator: Layout model for view.
+ */
 open class SPIndicatorLayout {
     
     /**

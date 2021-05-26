@@ -21,6 +21,9 @@
 
 import UIKit
 
+/**
+ SPIndicator: Wrapper of haptic styles.
+ */
 public enum SPIndicatorHaptic {
     
     case success
