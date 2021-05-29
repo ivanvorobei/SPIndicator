@@ -45,6 +45,10 @@ class PresetsController: SPDiffableTableController {
         currentPreset = presets.first!
         setCellProviders(SPDiffableTableCellProviders.default, sections: content)
         
+        let segmentedControl = UISegmentedControl(items: ["Top", "Bottom"])
+        navigationItem.titleView = segmentedControl
+        segmentedControl.selectedSegmentIndex = 0
+        
         navigationController?.isToolbarHidden = false
         toolbarItems = [
             .init(image: .system("chevron.down.circle"), primaryAction: .init(handler: { (action) in
@@ -60,11 +64,14 @@ class PresetsController: SPDiffableTableController {
             })),
             .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             .init(systemItem: .play, primaryAction: .init(handler: { [weak self] (action) in
-                guard let preset = self?.currentPreset else { return }
+                guard let self = self else { return }
+                guard let preset = self.currentPreset else { return }
+                guard let segmentControl = self.navigationItem.titleView as? UISegmentedControl else { return }
+                let presentPosition = segmentControl.selectedSegmentIndex == 0 ? SPIndicatorPresentSide.top : SPIndicatorPresentSide.botton
                 if let iconPreset = preset.preset {
-                    SPIndicator.present(title: preset.title, message: preset.message, preset: iconPreset, completion: nil)
+                    SPIndicator.present(title: preset.title, message: preset.message, preset: iconPreset, from: presentPosition, completion: nil)
                 } else {
-                    SPIndicator.present(title: preset.title, message: preset.message, haptic: .success)
+                    SPIndicator.present(title: preset.title, message: preset.message, haptic: .success, from: presentPosition)
                 }
                 
             }), menu: nil),

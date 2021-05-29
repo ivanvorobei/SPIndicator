@@ -39,6 +39,12 @@ open class SPIndicatorView: UIView {
     
     // MARK: - Properties
     
+    /**
+     SPIndicator: Change it for set `top` or `bottom` present side.
+     Shoud be change before present, instead of no effect.
+     */
+    open var presentSide: SPIndicatorPresentSide = .top
+    
     open var dismissByDrag: Bool = true {
         didSet {
             setGester()
@@ -97,6 +103,7 @@ open class SPIndicatorView: UIView {
     }
     
     public required init?(coder aDecoder: NSCoder) {
+        self.presentSide = .top
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -194,14 +201,14 @@ open class SPIndicatorView: UIView {
         sizeToFit()
         layoutSubviews()
         center.x = window.frame.midX
-        toPresentPosition(.prepare)
+        toPresentPosition(.prepare(presentSide))
         
         // Present
         
         isHidden = false
         haptic.impact()
         UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseOut], animations: {
-            self.toPresentPosition(.visible)
+            self.toPresentPosition(.visible(self.presentSide))
         }, completion: { finished in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
                 if self.gesterIsDragging {
@@ -221,7 +228,7 @@ open class SPIndicatorView: UIView {
     
     @objc open func dismiss() {
         UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
-            self.toPresentPosition(.prepare)
+            self.toPresentPosition(.prepare(self.presentSide))
         }, completion: { finished in
             self.removeFromSuperview()
             self.completion?()
@@ -245,7 +252,7 @@ open class SPIndicatorView: UIView {
                     return min(maxmiumYTranslationByGester, translation.y.squareRoot())
                 }
             }()
-            toPresentPosition(.fromVisible(newTranslation))
+            toPresentPosition(.fromVisible(newTranslation, from: (presentSide)))
         }
         
         if gestureRecognizer.state == .ended {
@@ -253,13 +260,13 @@ open class SPIndicatorView: UIView {
             
             UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
                 if self.whenGesterEndShoudHide {
-                    self.toPresentPosition(.prepare)
+                    self.toPresentPosition(.prepare(self.presentSide))
                 } else {
                     let translation = gestureRecognizer.translation(in: self)
                     if translation.y < self.minimumYTranslationForHideByGester {
-                        self.toPresentPosition(.prepare)
+                        self.toPresentPosition(.prepare(self.presentSide))
                     } else {
-                        self.toPresentPosition(.visible)
+                        self.toPresentPosition(.visible(self.presentSide))
                     }
                 }
             }, completion: nil)
@@ -268,21 +275,45 @@ open class SPIndicatorView: UIView {
     
     private func toPresentPosition(_ position: PresentPosition) {
         switch position {
-        case .prepare:
-            let position = -((UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0) + 50)
-            transform = CGAffineTransform.identity.translatedBy(x: 0, y: position)
-        case .visible:
-            transform = visibleTranform
-        case .fromVisible(let value):
-            transform = visibleTranform.translatedBy(x: 0, y: value)
+        case .prepare(let presentSide):
+            transform = getPrepareTransform(from: presentSide)
+        case .visible(let presentSide):
+            transform = getVisibleTransform(from: presentSide)
+        case .fromVisible(let translation, let presentSide):
+            transform = getVisibleTransform(from: presentSide).translatedBy(x: 0, y: translation)
         }
     }
     
-    private var visibleTranform: CGAffineTransform {
-        var topSafeAreaInsets = (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
-        if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
-        let position = topSafeAreaInsets - 3
-        return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+    private func getPrepareTransform(from side: SPIndicatorPresentSide) -> CGAffineTransform {
+        guard let window = UIApplication.shared.windows.first else { return .identity }
+        switch side {
+        case .top:
+            let topInset = window.safeAreaInsets.top
+            let position = -(topInset + 50)
+            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+        case .botton:
+            let height = window.frame.height
+            let bottonInset = window.safeAreaInsets.bottom
+            let position = height + bottonInset + 50
+            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+        }
+    }
+    
+    private func getVisibleTransform(from side: SPIndicatorPresentSide) -> CGAffineTransform {
+        guard let window = UIApplication.shared.windows.first else { return .identity }
+        switch side {
+        case .top:
+            var topSafeAreaInsets = window.safeAreaInsets.top
+            if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
+            let position = topSafeAreaInsets - 3
+            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+        case .botton:
+            let height = window.frame.height
+            var bottomSafeAreaInsets = window.safeAreaInsets.top
+            if bottomSafeAreaInsets < 20 { bottomSafeAreaInsets = 20 }
+            let position = height - bottomSafeAreaInsets - 3 - frame.height
+            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+        }
     }
     
     // MARK: - Layout
@@ -475,9 +506,9 @@ open class SPIndicatorView: UIView {
     
     enum PresentPosition {
         
-        case prepare
-        case visible
-        case fromVisible(_ translation: CGFloat)
+        case prepare(_ from: SPIndicatorPresentSide)
+        case visible(_ from: SPIndicatorPresentSide)
+        case fromVisible(_ translation: CGFloat, from: SPIndicatorPresentSide)
     }
     
     enum LayoutGrid {
