@@ -45,7 +45,7 @@ class PresetsController: SPDiffableTableController {
         currentPreset = presets.first!
         setCellProviders(SPDiffableTableCellProviders.default, sections: content)
         
-        let segmentedControl = UISegmentedControl(items: ["Top", "Bottom"])
+        let segmentedControl = UISegmentedControl(items: ["Top", "Center", "Bottom"])
         navigationItem.titleView = segmentedControl
         segmentedControl.selectedSegmentIndex = 0
         
@@ -67,11 +67,20 @@ class PresetsController: SPDiffableTableController {
                 guard let self = self else { return }
                 guard let preset = self.currentPreset else { return }
                 guard let segmentControl = self.navigationItem.titleView as? UISegmentedControl else { return }
-                let presentPosition = segmentControl.selectedSegmentIndex == 0 ? SPIndicatorPresentSide.top : SPIndicatorPresentSide.botton
+                
+                let presentSide: SPIndicatorPresentSide = {
+                    switch segmentControl.selectedSegmentIndex {
+                    case 0: return SPIndicatorPresentSide.top
+                    case 1: return SPIndicatorPresentSide.center
+                    case 2: return SPIndicatorPresentSide.bottom
+                    default: fatalError()
+                    }
+                }()
+                
                 if let iconPreset = preset.preset {
-                    SPIndicator.present(title: preset.title, message: preset.message, preset: iconPreset, from: presentPosition, completion: nil)
+                    SPIndicator.present(title: preset.title, message: preset.message, preset: iconPreset, from: presentSide, completion: nil)
                 } else {
-                    SPIndicator.present(title: preset.title, message: preset.message, haptic: .success, from: presentPosition)
+                    SPIndicator.present(title: preset.title, message: preset.message, haptic: .success, from: presentSide)
                 }
                 
             }), menu: nil),

@@ -27,5 +27,6 @@ import Foundation
 public enum SPIndicatorPresentSide {
     
     case top
-    case botton
+    case center
+    case bottom
 }

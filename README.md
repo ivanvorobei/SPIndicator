@@ -4,7 +4,7 @@
 
 ### About
 
-Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images and present from top and bottom.
+Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images and present from top, center & bottom side.
 
 If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
