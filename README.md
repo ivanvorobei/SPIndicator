@@ -24,6 +24,7 @@ If you like the project, don't forget to `put star ★` and follow me on GitHub:
     - [Layout](#layout)
     - [Dismiss by Drag](#dismiss-by-drag)
     - [Haptic](#haptic)
+    - [Present Side](#present-side)
 - [Other Projects](#other-projects)
 - [Russian Community](#russian-community)
 
@@ -59,7 +60,7 @@ If you prefer not to use any of dependency managers, you can integrate `SPIndica
 
 ## Quick Start
 
-For best experience, I recommend presenting alerts by calling the class functions `SPIndicator`. These functions are updated regularly and show the alerts as Apple way: 
+For best experience, I recommend presenting indicator by calling the class functions `SPIndicator`. These functions are updated regularly and show the indicator as Apple way: 
 
 ```swift
 SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
@@ -85,7 +86,7 @@ You can provide message optional too.
 
 ### Duration
 
-For change duration of present time, create alert view and call `present` method with custom duration:
+For change duration of present time, create indicator view and call `present` method with custom duration:
 
 ```swift
 let indicatorView = SPIndicatorView(title: "Complete", preset: .done)
@@ -103,7 +104,7 @@ indicatorView.layout.margins.top = 12
 
 ### Dismiss by Drag
 
-By default allow drag alert for hide. While alert is dragging, dismiss not work. This can be disabled:
+By default allow drag indicator for hide. While indicator is dragging, dismiss not work. This can be disabled:
 
 ```swift
 indicatorView.dismissByDrag = false
@@ -114,10 +115,23 @@ indicatorView.dismissByDrag = false
 For manage haptic, you shoud pass it in present method:
 
 ```swift
-alertView.present(duration: 1.5, haptic: .success, completion: nil)
+indicatorView.present(duration: 1.5, haptic: .success, completion: nil)
 ```
 
 You can remove duration and completion, its have default values.
+
+### Present Side
+
+If you need present from special side, use this: 
+
+```swift
+SPIndicator.present(title: "Error", message: "Try Again", preset: .error, from: .bottom)
+
+// or with custom view
+
+indicatorView.presentSide = .bottom
+```
+In last cases indicator will appear from bottom and attached to bottom. 
 
 ## Other Projects
 
