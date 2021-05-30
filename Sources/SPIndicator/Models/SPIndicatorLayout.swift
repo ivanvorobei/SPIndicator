@@ -35,15 +35,9 @@ open class SPIndicatorLayout {
      SPIndicator: Alert margings for each side.
      */
     open var margins: UIEdgeInsets
-     
-    /**
-     SPIndicator: Alert offset
-     */
-    open var offset: CGFloat
     
-    public init(iconSize: CGSize, margins: UIEdgeInsets, offset: CGFloat = 0) {
+    public init(iconSize: CGSize, margins: UIEdgeInsets) {
         self.iconSize = iconSize
         self.margins = margins
-        self.offset = offset
     }
 }
