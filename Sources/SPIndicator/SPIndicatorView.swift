@@ -346,13 +346,13 @@ open class SPIndicatorView: UIView {
         case .top:
             var topSafeAreaInsets = window.safeAreaInsets.top
             if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
-            let position = topSafeAreaInsets - 3
+            let position = topSafeAreaInsets - 3 + offset
             return CGAffineTransform.identity.translatedBy(x: 0, y: position)
         case .bottom:
             let height = window.frame.height
             var bottomSafeAreaInsets = window.safeAreaInsets.top
             if bottomSafeAreaInsets < 20 { bottomSafeAreaInsets = 20 }
-            let position = height - bottomSafeAreaInsets - 3 - frame.height
+            let position = height - bottomSafeAreaInsets - 3 - frame.height - offset
             return CGAffineTransform.identity.translatedBy(x: 0, y: position)
         case .center:
             return CGAffineTransform.identity.translatedBy(x: 0, y: window.frame.height / 2 - frame.height / 2)
@@ -362,6 +362,11 @@ open class SPIndicatorView: UIView {
     // MARK: - Layout
     
     open var layout: SPIndicatorLayout = .init()
+ 
+    /**
+     SPIndicator: Alert offset
+     */
+    open var offset: CGFloat = 0
     
     private var areaHeight: CGFloat = 50
     private var minimumAreaWidth: CGFloat = 196
