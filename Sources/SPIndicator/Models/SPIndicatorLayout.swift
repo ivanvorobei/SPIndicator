@@ -37,19 +37,13 @@ open class SPIndicatorLayout {
     open var margins: UIEdgeInsets
      
     /**
-     SPIndicator: Alert top offset
+     SPIndicator: Alert offset
      */
-    open var topOffset: CGFloat
+    open var offset: CGFloat
     
-    /**
-     SPIndicator: Alert bottom offset
-     */
-    open var bottomOffset: CGFloat
-    
-    public init(iconSize: CGSize, margins: UIEdgeInsets, topOffset: CGFloat = 0, bottomOffset: CGFloat = 0) {
+    public init(iconSize: CGSize, margins: UIEdgeInsets, offset: CGFloat = 0) {
         self.iconSize = iconSize
         self.margins = margins
-        self.topOffset = topOffset
-        self.bottomOffset = bottomOffset
+        self.offset = offset
     }
 }
