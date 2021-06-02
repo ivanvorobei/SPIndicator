@@ -131,7 +131,7 @@ SPIndicator.present(title: "Error", message: "Try Again", preset: .error, from: 
 
 indicatorView.presentSide = .bottom
 ```
-In last cases indicator will appear from bottom and attached to bottom. 
+In last cases indicator will appear from bottom and attached to bottom. For manage offset check property `offset`.
 
 ## Other Projects
 
