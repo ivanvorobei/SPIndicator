@@ -313,56 +313,62 @@ open class SPIndicatorView: UIView {
     }
     
     private func toPresentPosition(_ position: PresentPosition) {
+        
+        let getPrepareTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
+            guard let self = self else { return .identity }
+            guard let window = UIApplication.shared.windows.first else { return .identity }
+            switch side {
+            case .top:
+                let topInset = window.safeAreaInsets.top
+                let position = -(topInset + 50)
+                return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+            case .bottom:
+                let height = window.frame.height
+                let bottomInset = window.safeAreaInsets.bottom
+                let position = height + bottomInset + 50
+                return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+            case .center:
+                return CGAffineTransform.identity.translatedBy(x: 0, y: window.frame.height / 2 - self.frame.height / 2).scaledBy(x: 0.9, y: 0.9)
+            }
+        }
+        
+        let getVisibleTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
+            guard let self = self else { return .identity }
+            guard let window = UIApplication.shared.windows.first else { return .identity }
+            switch side {
+            case .top:
+                var topSafeAreaInsets = window.safeAreaInsets.top
+                if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
+                let position = topSafeAreaInsets - 3 + self.offset
+                return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+            case .bottom:
+                let height = window.frame.height
+                var bottomSafeAreaInsets = window.safeAreaInsets.top
+                if bottomSafeAreaInsets < 20 { bottomSafeAreaInsets = 20 }
+                let position = height - bottomSafeAreaInsets - 3 - self.frame.height - self.offset
+                return CGAffineTransform.identity.translatedBy(x: 0, y: position)
+            case .center:
+                return CGAffineTransform.identity.translatedBy(x: 0, y: window.frame.height / 2 - self.frame.height / 2)
+            }
+        }
+        
         switch position {
         case .prepare(let presentSide):
-            transform = getPrepareTransform(from: presentSide)
+            transform = getPrepareTransform(presentSide)
         case .visible(let presentSide):
-            transform = getVisibleTransform(from: presentSide)
+            transform = getVisibleTransform(presentSide)
         case .fromVisible(let translation, let presentSide):
-            transform = getVisibleTransform(from: presentSide).translatedBy(x: 0, y: translation)
-        }
-    }
-    
-    private func getPrepareTransform(from side: SPIndicatorPresentSide) -> CGAffineTransform {
-        guard let window = UIApplication.shared.windows.first else { return .identity }
-        switch side {
-        case .top:
-            let topInset = window.safeAreaInsets.top
-            let position = -(topInset + 50)
-            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
-        case .bottom:
-            let height = window.frame.height
-            let bottomInset = window.safeAreaInsets.bottom
-            let position = height + bottomInset + 50
-            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
-        case .center:
-            return CGAffineTransform.identity.translatedBy(x: 0, y: window.frame.height / 2 - frame.height / 2).scaledBy(x: 0.9, y: 0.9)
-        }
-    }
-    
-    private func getVisibleTransform(from side: SPIndicatorPresentSide) -> CGAffineTransform {
-        guard let window = UIApplication.shared.windows.first else { return .identity }
-        switch side {
-        case .top:
-            var topSafeAreaInsets = window.safeAreaInsets.top
-            if topSafeAreaInsets < 20 { topSafeAreaInsets = 20 }
-            let position = topSafeAreaInsets - 3 + offset
-            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
-        case .bottom:
-            let height = window.frame.height
-            var bottomSafeAreaInsets = window.safeAreaInsets.top
-            if bottomSafeAreaInsets < 20 { bottomSafeAreaInsets = 20 }
-            let position = height - bottomSafeAreaInsets - 3 - frame.height - offset
-            return CGAffineTransform.identity.translatedBy(x: 0, y: position)
-        case .center:
-            return CGAffineTransform.identity.translatedBy(x: 0, y: window.frame.height / 2 - frame.height / 2)
+            transform = getVisibleTransform(presentSide).translatedBy(x: 0, y: translation)
         }
     }
     
     // MARK: - Layout
     
+    /**
+     SPIndicator: Wraper of layout values.
+     */
     open var layout: SPIndicatorLayout = .init()
- 
+    
     /**
      SPIndicator: Alert offset
      */
