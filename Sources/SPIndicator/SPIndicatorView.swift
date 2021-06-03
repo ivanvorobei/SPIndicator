@@ -79,7 +79,7 @@ open class SPIndicatorView: UIView {
         return view
     }()
     
-    weak open var presentWindow: UIWindow? = UIApplication.shared.windows.first
+    weak open var presentWindow: UIWindow?
     
     // MARK: - Init
     
@@ -197,6 +197,11 @@ open class SPIndicatorView: UIView {
     }
     
     open func present(duration: TimeInterval = 1.5, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
+        
+        if self.presentWindow == nil {
+            self.presentWindow = UIApplication.shared.windows.first
+        }
+        
         guard let window = self.presentWindow else { return }
         
         window.addSubview(self)
