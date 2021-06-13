@@ -199,7 +199,7 @@ open class SPIndicatorView: UIView {
     open func present(duration: TimeInterval = 1.5, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
         
         if self.presentWindow == nil {
-            self.presentWindow = UIApplication.shared.windows.first
+            self.presentWindow = UIApplication.shared.keyWindow
         }
         
         guard let window = self.presentWindow else { return }
