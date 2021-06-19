@@ -25,6 +25,7 @@ If you like the project, don't forget to `put star ★` and follow me on GitHub:
     - [Dismiss by Drag](#dismiss-by-drag)
     - [Haptic](#haptic)
     - [Present Side](#present-side)
+    - [Shared Configuration](#shared-configuration)
 - [Other Projects](#other-projects)
 - [Russian Community](#russian-community)
 
@@ -132,6 +133,17 @@ SPIndicator.present(title: "Error", message: "Try Again", preset: .error, from: 
 indicatorView.presentSide = .bottom
 ```
 In last cases indicator will appear from bottom and attached to bottom. For manage offset check property `offset`.
+
+### Shared Configuration
+
+Also you can change some default values for alerts. For example you can change default duration for alert with next code:
+
+```swift
+SP
+IndicatorConfiguration.duration = 2
+```
+
+It will apply for all alerts. Shoud set configuration before present any alerts. I recomend set it in app delegate.
 
 ## Other Projects
 

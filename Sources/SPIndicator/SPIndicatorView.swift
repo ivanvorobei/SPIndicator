@@ -196,7 +196,7 @@ open class SPIndicatorView: UIView {
         return false
     }
     
-    open func present(duration: TimeInterval = 1.5, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
+    open func present(duration: TimeInterval = SPIndicatorConfiguration.duration, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
         
         if self.presentWindow == nil {
             self.presentWindow = UIApplication.shared.keyWindow
