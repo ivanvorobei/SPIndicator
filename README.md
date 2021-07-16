@@ -8,13 +8,10 @@ Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 
 
 If you need alert from Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
-If you like the project, don't forget to `put star ★` and follow me on GitHub:
+If you like the project, don't forget to `put star ★`. Check out my other libraries:
 
 
 <p float="left">
-    <a href="https://github.com/ivanvorobei">
-        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/follow-me-ivanvorobei.svg">
-    </a>
     <a href="https://opensource.ivanvorobei.by">
         <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/more-libraries.svg">
     </a>
