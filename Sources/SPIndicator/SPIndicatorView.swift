@@ -35,6 +35,7 @@ import UIKit
  
  Recomended call `SPIndicator` and choose style func.
  */
+@available(iOSApplicationExtension, unavailable)
 open class SPIndicatorView: UIView {
     
     // MARK: - Properties
@@ -505,7 +506,8 @@ open class SPIndicatorView: UIView {
             guard let self = self else { return }
             guard let titleLabel = self.titleLabel else { return }
             guard let iconView = self.iconView else { return }
-            titleLabel.textAlignment = UIApplication.shared.userInterfaceRightToLeft ? .right : .left
+            let rtl = self.effectiveUserInterfaceLayoutDirection == .rightToLeft
+            titleLabel.textAlignment = rtl ? .right : .left
             titleLabel.layoutDynamicHeight(width: self.titlesFullWidth)
             titleLabel.frame.origin.x = self.layoutMargins.left + iconView.frame.width + self.spaceBetweenTitlesAndImage
         }
