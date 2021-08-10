@@ -43,7 +43,7 @@ Ready for use on iOS 12+, tvOS 12+. Works with Swift 5+. Required Xcode 12.0 and
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
-To integrate `SPIndicator` into your Xcode project using Xcode 12, specify it in `File > Swift Packages > Add Package Dependency...`:
+To integrate using Xcode 12, specify it in `File > Swift Packages > Add Package Dependency...`:
 
 ```ogdl
 https://github.com/ivanvorobei/SPIndicator
@@ -51,7 +51,7 @@ https://github.com/ivanvorobei/SPIndicator
 
 ### CocoaPods:
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `SPIndicator` into your Xcode project using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 pod 'SPIndicator'
@@ -59,7 +59,7 @@ pod 'SPIndicator'
 
 ### Manually
 
-If you prefer not to use any of dependency managers, you can integrate `SPIndicator` into your project manually. Put `Sources/SPIndicator` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
+If you prefer not to use any of dependency managers, you can integrate manually. Put `Sources/SPIndicator` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
 <img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="270"/>
 
@@ -161,7 +161,8 @@ I have libraries with native interface and managing permissions. Also available 
 
 ## Russian Community
 
-Веду каналы об iOS разработке. Один с туториалами и новостями, другой с обзором библиотек. Со сложной задачей помогут в чате.
+Подписывайся в телеграмм-канал, если хочешь получать уведомления о новых туториалах.<br>
+Со сложными и непонятными задачами помогут в чате.
 
 <p float="left">
     <a href="https://sparrowcode.by/telegram/channel">
