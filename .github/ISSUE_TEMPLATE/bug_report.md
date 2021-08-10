@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: bug
 assignees: ivanvorobei
-
 ---
 
 **Describe the bug**
@@ -21,7 +20,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Smartphone (please complete the following information):**
  - iOS Version [e.g. 14.5.1]
- - `SPIndicator` version [e.g. 1.0.2]
+ - Framework Version [e.g. 3.0.8]
  - Installed via [e.g. SPM, Cocoapods, Manually]
 
 **Additional context**
