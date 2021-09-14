@@ -143,10 +143,10 @@ In last cases indicator will appear from bottom and attached to bottom. For mana
 Also you can change some default values for alerts. For example you can change default duration for alert with next code:
 
 ```swift
-SPIndicatorConfiguration.duration = 2
+SPIndicatorView.appearance().duration = 2
 ```
 
-It will apply for all alerts. Shoud set configuration before present any alerts. I recomend set it in app delegate.
+It will apply for all alerts. I recomend set it in app delegate. But you can change it in runtime.
 
 ## Other Projects
 
