@@ -11,10 +11,10 @@
 		F43F829E26578DCA001D9B3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43F829526578DCA001D9B3D /* LaunchScreen.storyboard */; };
 		F43F829F26578DCA001D9B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F829726578DCA001D9B3D /* AppDelegate.swift */; };
 		F43F82A126578DCA001D9B3D /* PresetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F829B26578DCA001D9B3D /* PresetsController.swift */; };
+		F46C34BE27071E59005681BA /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = F46C34BD27071E59005681BA /* SPIndicator */; };
 		F4B96F99265AC34400A01A29 /* SPDiffable in Frameworks */ = {isa = PBXBuildFile; productRef = F4B96F98265AC34400A01A29 /* SPDiffable */; };
 		F4B96F9C265AC36F00A01A29 /* IndicatorPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96F9B265AC36F00A01A29 /* IndicatorPresetModel.swift */; };
 		F4BAA4352658292F00DA5BF7 /* SparrowKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4342658292F00DA5BF7 /* SparrowKit */; };
-		F4BAA4372658293600DA5BF7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4362658293600DA5BF7 /* SPIndicator */; };
 		F4BAA4392658293F00DA5BF7 /* SparrowKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA4382658293F00DA5BF7 /* SparrowKit */; };
 		F4BAA43B2658294200DA5BF7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = F4BAA43A2658294200DA5BF7 /* SPIndicator */; };
 		F4BAA4402658297300DA5BF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4BAA43D2658297300DA5BF7 /* LaunchScreen.storyboard */; };
@@ -44,7 +44,7 @@
 		F43F829C26578DCA001D9B3D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43F82AB26578F03001D9B3D /* tvOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43F82B926578F04001D9B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F43F83452658286B001D9B3D /* SPIndicator */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SPIndicator; path = ..; sourceTree = "<group>"; };
+		F46C34BC27071E43005681BA /* SPIndicator */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SPIndicator; path = ..; sourceTree = "<group>"; };
 		F4B96F9B265AC36F00A01A29 /* IndicatorPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorPresetModel.swift; sourceTree = "<group>"; };
 		F4BAA43D2658297300DA5BF7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4BAA43E2658297300DA5BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			files = (
 				F4B96F99265AC34400A01A29 /* SPDiffable in Frameworks */,
 				F4BAA4352658292F00DA5BF7 /* SparrowKit in Frameworks */,
-				F4BAA4372658293600DA5BF7 /* SPIndicator in Frameworks */,
+				F46C34BE27071E59005681BA /* SPIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 		F43F827226578D83001D9B3D = {
 			isa = PBXGroup;
 			children = (
-				F43F83452658286B001D9B3D /* SPIndicator */,
+				F46C34BC27071E43005681BA /* SPIndicator */,
 				F43F829226578DCA001D9B3D /* iOS Example */,
 				F43F82AC26578F03001D9B3D /* tvOS Example */,
 				F43F827C26578D83001D9B3D /* Products */,
@@ -176,8 +176,8 @@
 			name = "iOS Example";
 			packageProductDependencies = (
 				F4BAA4342658292F00DA5BF7 /* SparrowKit */,
-				F4BAA4362658293600DA5BF7 /* SPIndicator */,
 				F4B96F98265AC34400A01A29 /* SPDiffable */,
+				F46C34BD27071E59005681BA /* SPIndicator */,
 			);
 			productName = SparrowKit;
 			productReference = F43F827B26578D83001D9B3D /* iOS Example.app */;
@@ -548,6 +548,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F46C34BD27071E59005681BA /* SPIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SPIndicator;
+		};
 		F4B96F98265AC34400A01A29 /* SPDiffable */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4B96F97265AC34400A01A29 /* XCRemoteSwiftPackageReference "SPDiffable" */;
@@ -557,10 +561,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4BAA4332658292F00DA5BF7 /* XCRemoteSwiftPackageReference "SparrowKit" */;
 			productName = SparrowKit;
-		};
-		F4BAA4362658293600DA5BF7 /* SPIndicator */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SPIndicator;
 		};
 		F4BAA4382658293F00DA5BF7 /* SparrowKit */ = {
 			isa = XCSwiftPackageProductDependency;
