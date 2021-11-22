@@ -46,7 +46,7 @@ Once you have your Swift package set up, adding as a dependency is as easy as ad
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ivanvorobei/SPIndicator", .upToNextMajor(from: "1.4.2"))
+    .package(url: "https://github.com/ivanvorobei/SPIndicator", .upToNextMajor(from: "1.5.0"))
 ]
 ```
 
