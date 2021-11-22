@@ -79,7 +79,7 @@ let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYello
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
 ```
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/message-only-preview.svg" width="210"/>
+<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/message-only-preview.svg" width="210"/>
 
 For showing a simple text message:
 
