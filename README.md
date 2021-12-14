@@ -26,7 +26,7 @@ Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 
 
 ## Installation
 
-Ready for use on iOS 12+, tvOS 12+. Works with Swift 5+. Required Xcode 12.0 and higher.
+Ready for use on iOS 12+ & tvOS 12+.
 
 ### Swift Package Manager
 
