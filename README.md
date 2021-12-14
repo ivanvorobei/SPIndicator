@@ -1,20 +1,14 @@
 # SPIndicator
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/preview-v1.jpg" width="360"/>
-
-### About
+<p aligment="left">
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/animatable-presets.png?version=1" height="210"/>
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/customize.png?version=1" height="210"/>
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/bottom-present.png?version=1" height="210"/>
+</p>
 
 Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images and present from top, center & bottom side.
 
 For get alert like in Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
-
-If you like the project, don't forget to `put star ★`<br>Check out my other libraries:
-
-<p float="left">
-    <a href="https://opensource.ivanvorobei.by">
-        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/more-libraries.svg">
-    </a>
-</p>
 
 ## Navigate
 
@@ -36,8 +30,6 @@ If you like the project, don't forget to `put star ★`<br>Check out my other li
 
 Ready for use on iOS 12+, tvOS 12+. Works with Swift 5+. Required Xcode 12.0 and higher.
 
-<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/spm-install-preview.png" width="520"/>
-
 ### Swift Package Manager
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
@@ -46,13 +38,13 @@ Once you have your Swift package set up, adding as a dependency is as easy as ad
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ivanvorobei/SPIndicator", .upToNextMajor(from: "1.5.0"))
+    .package(url: "https://github.com/ivanvorobei/SPIndicator", .upToNextMajor(from: "1.6.0"))
 ]
 ```
 
 ### CocoaPods:
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager. For usage and installation instructions, visit their website. To integrate using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 pod 'SPIndicator'
@@ -62,31 +54,21 @@ pod 'SPIndicator'
 
 If you prefer not to use any of dependency managers, you can integrate manually. Put `Sources/SPIndicator` folder in your Xcode project. Make sure to enable `Copy items if needed` and `Create groups`.
 
-<img align="right" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/error-preview.svg" width="270"/>
-
 ## Quick Start
 
 For best experience, I recommend presenting indicator by calling the class functions `SPIndicator`. These functions are updated regularly and show the indicator as Apple way: 
 
-```swift
-SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
-```
-
-For using a custom image:
-
 ```swift 
+// Presets:
+SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
+
+// For show with custom image:
 let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
 SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
-```
 
-<img align="left" src="https://github.com/ivanvorobei/SPIndicator/blob/main/Assets/Readme/message-only-preview.svg" width="210"/>
-
-For showing a simple text message:
-
-```swift 
+// For show text only:
 SPIndicator.present(title: "Error", haptic: .error)
 ```
-You can provide message optional too.
 
 ## Usage
 
@@ -151,17 +133,8 @@ It will apply for all alerts. I recomend set it in app delegate. But you can cha
 
 ## Russian Community
 
-Подписывайся в телеграм-канал, если хочешь получать уведомления о новых туториалах.<br>
-Со сложными и непонятными задачами помогут в чате.
-
-<p float="left">
-    <a href="https://sparrowcode.by/telegram">
-        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/open-telegram-channel.svg">
-    </a>
-    <a href="https://sparrowcode.by/telegram/chat">
-        <img src="https://github.com/ivanvorobei/Readme/blob/main/Buttons/russian-community-chat.svg">
-    </a>
-</p>
+Я веду [телеграм-канал](https://sparrowcode.by/telegram), там публикую новости и туториалы.<br>
+С проблемой помогут [в чате](https://sparrowcode.by/telegram/chat).
 
 Видео-туториалы выклыдываю на [YouTube](https://ivanvorobei.by/youtube):
 

@@ -163,7 +163,7 @@ class PresetsController: SPDiffableTableController {
             return SPDiffableTableRow(
                 text: preset.name,
                 accessoryType: (preset.id == currentPreset?.id) ? .checkmark : .none,
-                selectionStyle: .none) { [weak self] _ in
+                selectionStyle: .none) { [weak self] _, _ in
                 guard let self = self else { return }
                 self.currentPreset = preset
             }

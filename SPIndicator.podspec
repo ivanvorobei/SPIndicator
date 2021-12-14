@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 
   s.name = 'SPIndicator'
-  s.version = '1.5.0'
-  s.summary = 'Floating indicator, mimicrate to indicator which appear when silent mode turn on / off. Support large texts.'
+  s.version = '1.6.0'
+  s.summary = 'Floating indicator, mimicrate to indicator which appear when silent mode switched. Can be present from top and bottom. Interactive with gesters.'
   s.homepage = 'https://github.com/ivanvorobei/SPIndicator'
   s.source = { :git => 'https://github.com/ivanvorobei/SPIndicator.git', :tag => s.version }
   s.license = { :type => "MIT", :file => "LICENSE" }
