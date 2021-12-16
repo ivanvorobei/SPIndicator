@@ -1,9 +1,9 @@
 # SPIndicator
 
 <p aligment="left">
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/animatable-presets.png?version=1" height="190"/>
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/customize.png?version=1" height="190"/>
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/bottom-present.png?version=1" height="190"/>
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/animatable-presets.png?version=1" height="180"/>
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/customize.png?version=1" height="180"/>
+    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
 </p>
 
 Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images and present from top, center & bottom side. For get alert like in Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
