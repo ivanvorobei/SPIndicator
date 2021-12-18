@@ -129,6 +129,35 @@ SPIndicatorView.appearance().duration = 2
 
 It will apply for all alerts. I recomend set it in app delegate. But you can change it in runtime.
 
+## SwiftUI
+
+Use like system alert only show message tips:
+
+```swift
+Button("Show indicator") {
+    showIndicator = true
+}.spIndicator(isPresent: $showIndicator, title: "this is title only")
+```
+
+or show message, title, image and other configuration:
+
+```swift
+Button("Show indicator") {
+    showIndicator = true
+}.spIndicator(isPresent: $showIndicator, 
+        title: "Indicator title", 
+        message: "Indicator message",
+        duration: 2.0, 
+        presentSide: .top,
+        dismissByDrag: false, 
+        preset: .custom(UIImage(systemName: "heart")!), 
+        haptic: .success, 
+        layout: .init(), 
+        completion: {
+            print("Indicator is destoryed")
+        })
+```
+
 ## Russian Community
 
 Я веду [телеграм-канал](https://sparrowcode.by/telegram), там публикую новости и туториалы.<br>
