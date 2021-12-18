@@ -22,7 +22,7 @@ Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 
     - [Haptic](#haptic)
     - [Present Side](#present-side)
     - [Shared Configuration](#shared-configuration)
-- [Swift UI](#swift-ui)
+- [Swift UI](#swiftui)
 - [Russian Community](#russian-community)
 
 ## Installation
