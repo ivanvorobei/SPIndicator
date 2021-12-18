@@ -22,6 +22,7 @@ Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 
     - [Haptic](#haptic)
     - [Present Side](#present-side)
     - [Shared Configuration](#shared-configuration)
+- [Swift UI](#swift-ui)
 - [Russian Community](#russian-community)
 
 ## Installation
@@ -134,28 +135,29 @@ It will apply for all alerts. I recomend set it in app delegate. But you can cha
 Use like system alert only show message tips:
 
 ```swift
-Button("Show indicator") {
+Button("Show Indicator") {
     showIndicator = true
-}.spIndicator(isPresent: $showIndicator, title: "this is title only")
+}.SPIndicator(isPresent: $showIndicator, title: "This is title only")
 ```
 
 or show message, title, image and other configuration:
 
 ```swift
-Button("Show indicator") {
+Button("Show Indicator") {
     showIndicator = true
-}.spIndicator(isPresent: $showIndicator, 
-        title: "Indicator title", 
-        message: "Indicator message",
-        duration: 2.0, 
-        presentSide: .top,
-        dismissByDrag: false, 
-        preset: .custom(UIImage(systemName: "heart")!), 
-        haptic: .success, 
-        layout: .init(), 
-        completion: {
-            print("Indicator is destoryed")
-        })
+}.SPIndicator(
+    isPresent: $showIndicator, 
+    title: "Title", 
+    message: "Message",
+    duration: 2.0, 
+    presentSide: .top,
+    dismissByDrag: false, 
+    preset: .custom(UIImage(systemName: "heart")!), 
+    haptic: .success, 
+    layout: .init(), 
+    completion: {
+        print("Indicator is destoryed")
+    })
 ```
 
 ## Russian Community
