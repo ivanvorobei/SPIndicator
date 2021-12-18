@@ -62,7 +62,7 @@ extension View {
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.layout = layout ??  SPIndicatorLayout(for: preset)
         indicatorView.completion = completion
-        return spIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
+        return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     
     public func SPIndicator(
@@ -80,7 +80,7 @@ extension View {
         indicatorView.presentSide = presentSide
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.completion = completion
-        return spIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
+        return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     
 }
