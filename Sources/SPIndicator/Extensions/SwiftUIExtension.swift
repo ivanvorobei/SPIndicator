@@ -21,6 +21,8 @@
 
 import SwiftUI
 
+#if os(iOS)
+
 @available(iOS 13.0, *)
 @available(iOSApplicationExtension, unavailable)
 
@@ -32,6 +34,7 @@ extension View {
         duration: TimeInterval = 2.0,
         haptic: SPIndicatorHaptic = .none
     ) -> some View {
+        
         if isPresent.wrappedValue {
             let indicatorCompletion  = indicatorView.completion
             let indicatorDismiss = {
@@ -84,3 +87,4 @@ extension View {
     }
     
 }
+#endif
