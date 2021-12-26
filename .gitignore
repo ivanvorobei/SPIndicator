@@ -5,5 +5,5 @@
 # Swift Package Manager
 .swiftpm
 
-# Stock
-/Assets/Stock/
+# User Interface
+*UserInterfaceState.xcuserstate
