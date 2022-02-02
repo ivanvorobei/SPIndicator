@@ -77,8 +77,7 @@ public extension SPIndicatorLayout {
                 left: Self.defaultHorizontalInset,
                 bottom: Self.defaultVerticallInset,
                 right: Self.defaultHorizontalInset
-            ),
-            cornerRadius: Self.defaultCornerRadius
+            )
         )
     }
     
@@ -108,6 +107,5 @@ public extension SPIndicatorLayout {
     private static var defaultSpaceBetweenIconAndTitle: CGFloat { 26 }
     private static var defaultVerticallInset: CGFloat { 8 }
     private static var defaultHorizontalInset: CGFloat { 15 }
-    private static var defaultCornerRadius: CGFloat { 8 }
 }
 

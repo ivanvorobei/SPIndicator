@@ -439,9 +439,9 @@ open class SPIndicatorView: UIView {
         super.layoutSubviews()
         
         layoutMargins = layout.margins
-        layer.cornerRadius = layout.cornerRadius
+        layer.cornerRadius = frame.height / 2
         backgroundView.frame = bounds
-        backgroundView.layer.cornerRadius = layout.cornerRadius
+        backgroundView.layer.cornerRadius = layer.cornerRadius
         
         // Flags
         
