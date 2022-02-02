@@ -57,7 +57,7 @@ open class SPIndicatorView: UIView {
      */
     open var dismissByDrag: Bool = true {
         didSet {
-            setGester()
+            setGesture()
         }
     }
     
@@ -128,7 +128,7 @@ open class SPIndicatorView: UIView {
         addSubview(backgroundView)
         
         setShadow()
-        setGester()
+        setGesture()
     }
     
     // MARK: - Configure
@@ -182,7 +182,7 @@ open class SPIndicatorView: UIView {
         // layer.shouldRasterize = true
     }
     
-    private func setGester() {
+    private func setGesture() {
         if dismissByDrag {
             let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
             addGestureRecognizer(gestureRecognizer)
@@ -218,7 +218,7 @@ open class SPIndicatorView: UIView {
         
         // Prepare for present
         
-        self.whenGesterEndShoudHide = false
+        self.whenGestureEndShoudHide = false
         self.completion = completion
         
         isHidden = true
@@ -238,8 +238,8 @@ open class SPIndicatorView: UIView {
             if self.presentWithOpacity { self.alpha = 1 }
         }, completion: { finished in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {
-                if self.gesterIsDragging {
-                    self.whenGesterEndShoudHide = true
+                if self.gestureIsDragging {
+                    self.whenGestureEndShoudHide = true
                 } else {
                     self.dismiss()
                 }
@@ -272,16 +272,16 @@ open class SPIndicatorView: UIView {
     
     // MARK: - Internal
     
-    private var minimumYTranslationForHideByGester: CGFloat = -10
-    private var maxmiumYTranslationByGester: CGFloat = 60
+    private var minimumYTranslationForHideByGesture: CGFloat = -10
+    private var maximumYTranslationByGesture: CGFloat = 60
     
     private var gestureRecognizer: UIPanGestureRecognizer?
-    private var gesterIsDragging: Bool = false
-    private var whenGesterEndShoudHide: Bool = false
+    private var gestureIsDragging: Bool = false
+    private var whenGestureEndShoudHide: Bool = false
     
     @objc func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            self.gesterIsDragging = true
+            self.gestureIsDragging = true
             let translation = gestureRecognizer.translation(in: self)
             let newTranslation: CGFloat = {
                 switch presentSide {
@@ -289,36 +289,36 @@ open class SPIndicatorView: UIView {
                     if translation.y <= 0 {
                         return translation.y
                     } else {
-                        return min(maxmiumYTranslationByGester, translation.y.squareRoot())
+                        return min(maximumYTranslationByGesture, translation.y.squareRoot())
                     }
                 case .bottom:
                     if translation.y >= 0 {
                         return translation.y
                     } else {
                         let absolute = abs(translation.y)
-                        return -min(maxmiumYTranslationByGester, absolute.squareRoot())
+                        return -min(maximumYTranslationByGesture, absolute.squareRoot())
                     }
                 case .center:
                     let absolute = abs(translation.y).squareRoot()
                     let newValue = translation.y < 0 ? -absolute : absolute
-                    return min(maxmiumYTranslationByGester, newValue)
+                    return min(maximumYTranslationByGesture, newValue)
                 }
             }()
             toPresentPosition(.fromVisible(newTranslation, from: (presentSide)))
         }
         
         if gestureRecognizer.state == .ended {
-            gesterIsDragging = false
+            gestureIsDragging = false
             
             var shoudDismissWhenEndAnimation: Bool = false
             
             UIView.animate(withDuration: presentAndDismissDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.beginFromCurrentState, .curveEaseIn], animations: {
-                if self.whenGesterEndShoudHide {
+                if self.whenGestureEndShoudHide {
                     self.toPresentPosition(.prepare(self.presentSide))
                     shoudDismissWhenEndAnimation = true
                 } else {
                     let translation = gestureRecognizer.translation(in: self)
-                    if translation.y < self.minimumYTranslationForHideByGester {
+                    if translation.y < self.minimumYTranslationForHideByGesture {
                         self.toPresentPosition(.prepare(self.presentSide))
                         shoudDismissWhenEndAnimation = true
                     } else {
@@ -364,7 +364,7 @@ open class SPIndicatorView: UIView {
                 return CGAffineTransform.identity.translatedBy(x: 0, y: position)
             case .bottom:
                 let height = window.frame.height
-                var bottomSafeAreaInsets = window.safeAreaInsets.top
+                var bottomSafeAreaInsets = window.safeAreaInsets.bottom
                 if bottomSafeAreaInsets < 20 { bottomSafeAreaInsets = 20 }
                 let position = height - bottomSafeAreaInsets - 3 - self.frame.height - self.offset
                 return CGAffineTransform.identity.translatedBy(x: 0, y: position)
