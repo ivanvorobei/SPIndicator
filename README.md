@@ -6,9 +6,9 @@
     <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
 </p>
 
-Mimicrate to indicator which appear when silent mode turn on / off. Availalbe 2 animated presets: `done` & `error`.  Also support custom images and present from top, center & bottom side. 
+Mimicrate for the indicator which appears when silent mode is turned on / off. Availalbe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
 
-For get alert like in Apple music, use library [SPAlert](https://github.com/ivanvorobei/SPAlert).
+To get an alert like in Apple music, use this library instead [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
 ## Navigate
 
@@ -75,7 +75,7 @@ SPIndicator.present(title: "Error", haptic: .error)
 
 ### Duration
 
-For change duration of present time, create indicator view and call `present` method with custom duration:
+To change the presentation duration time, create the indicator view and call the method `present` with a custom duration:
 
 ```swift
 let indicatorView = SPIndicatorView(title: "Complete", preset: .done)
@@ -84,16 +84,17 @@ indicatorView.present(duration: 3)
 
 ### Layout
 
-For customise layout and margins, use `layout` property. You can manage margins for each side, icon size and space between image and titles:
+To customise the layout, margins and corner radius, use `layout` property. You can manage margins for each side, icon size and space between image and titles, and also the corner radius for the background view and the shadow layer:
 
 ```swift
 indicatorView.layout.iconSize = .init(width: 24, height: 24)
 indicatorView.layout.margins.top = 12
+indicatorView.layout.cornerRadius = 8
 ```
 
 ### Dismiss by Drag
 
-By default allow drag indicator for hide. While indicator is dragging, dismiss not work. This can be disabled:
+By default, you can drag the indicator to hide it. While the indicator is dragging, dismiss is not working. This behaviour can be disabled:
 
 ```swift
 indicatorView.dismissByDrag = false
@@ -101,17 +102,17 @@ indicatorView.dismissByDrag = false
 
 ### Haptic
 
-For manage haptic, you shoud pass it in present method:
+To manage haptics, you shoud pass it in present method:
 
 ```swift
 indicatorView.present(duration: 1.5, haptic: .success, completion: nil)
 ```
 
-You can remove duration and completion, its have default values.
+You can remove the duration and completion parameters from the init. They have default values.
 
 ### Present Side
 
-If you need present from special side, use this: 
+You can change the presentation side: 
 
 ```swift
 SPIndicator.present(title: "Error", message: "Try Again", preset: .error, from: .bottom)
@@ -120,17 +121,17 @@ SPIndicator.present(title: "Error", message: "Try Again", preset: .error, from: 
 
 indicatorView.presentSide = .bottom
 ```
-In last cases indicator will appear from bottom and attached to bottom. For manage offset check property `offset`.
+In the case from above, the indicator will appear from bottom and will be attached to bottom. To manage the offset - check the property `offset`.
 
 ### Shared Configuration
 
-Also you can change some default values for alerts. For example you can change default duration for alert with next code:
+Also, you can change some default values for the alerts. For example, you can change the default duration for an alert with this code:
 
 ```swift
 SPIndicatorView.appearance().duration = 2
 ```
 
-It will apply for all alerts. I recomend set it in app delegate. But you can change it in runtime.
+It will apply for all alerts. I recommend to set it in app delegate, but you can change it in runtime.
 
 ## SwiftUI
 
