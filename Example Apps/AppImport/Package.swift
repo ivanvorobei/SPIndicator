@@ -13,8 +13,8 @@ let package = Package(
         .library(name: "AppImport", targets: ["AppImport"]),
     ],
     dependencies: [
-        .package(name: "SparrowKit", url: "https://github.com/ivanvorobei/SparrowKit", .upToNextMajor(from: "3.4.3")),
-        .package(name: "SPDiffable", url: "https://github.com/ivanvorobei/SPDiffable", .upToNextMajor(from: "1.6.2")),
+        .package(name: "SparrowKit", url: "https://github.com/ivanvorobei/SparrowKit", .upToNextMajor(from: "3.5.1")),
+        .package(name: "SPDiffable", url: "https://github.com/ivanvorobei/SPDiffable", .upToNextMajor(from: "4.0.1")),
         .package(name: "SPIndicator", path: "SPIndicator")
     ],
     targets: [

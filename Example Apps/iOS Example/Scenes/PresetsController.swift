@@ -43,7 +43,7 @@ class PresetsController: SPDiffableTableController {
         navigationItem.title = "SPIndicator Presets"
         
         currentPreset = presets.first!
-        setCellProviders(SPDiffableTableCellProviders.default, sections: content)
+        configureDiffable(sections: content, cellProviders: SPDiffableTableDataSource.CellProvider.default)
         
         let segmentedControl = UISegmentedControl(items: ["Top", "Center", "Bottom"])
         navigationItem.titleView = segmentedControl
@@ -146,15 +146,8 @@ class PresetsController: SPDiffableTableController {
     // MARK: - Diffable
     
     var currentPreset: IndicatorPresetModel? {
-        willSet {
-            guard let id = self.currentPreset?.id else { return }
-            let cell = diffableDataSource?.cell(UITableViewCell.self, for: id)
-            cell?.accessoryType = .none
-        }
         didSet {
-            guard let id = self.currentPreset?.id else { return }
-            let cell = diffableDataSource?.cell(UITableViewCell.self, for: id)
-            cell?.accessoryType = .checkmark
+            diffableDataSource?.set(self.content, animated: true, completion: nil)
         }
     }
     
@@ -169,7 +162,7 @@ class PresetsController: SPDiffableTableController {
             }
         }
         return [
-            SPDiffableSection(identifier: "presets", header: nil, footer: nil, items: items)
+            SPDiffableSection(id: "presets", header: nil, footer: nil, items: items)
         ]
     }
 }
