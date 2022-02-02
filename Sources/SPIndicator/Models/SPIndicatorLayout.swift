@@ -36,14 +36,8 @@ open class SPIndicatorLayout {
      */
     open var margins: UIEdgeInsets
     
-    /**
-     SPIndicator: Corner radius value for the background view.
-     */
-    open var cornerRadius: CGFloat
-    
-    public init(iconSize: CGSize, margins: UIEdgeInsets, cornerRadius: CGFloat) {
+    public init(iconSize: CGSize, margins: UIEdgeInsets) {
         self.iconSize = iconSize
         self.margins = margins
-        self.cornerRadius = cornerRadius
     }
 }
