@@ -84,12 +84,11 @@ indicatorView.present(duration: 3)
 
 ### Layout
 
-To customise the layout, margins and corner radius, use `layout` property. You can manage margins for each side, icon size and space between image and titles, and also the corner radius for the background view and the shadow layer:
+To customise the layout & margins use the `layout` property. You can manage margins for each side, icon size and space between image and titles:
 
 ```swift
 indicatorView.layout.iconSize = .init(width: 24, height: 24)
 indicatorView.layout.margins.top = 12
-indicatorView.layout.cornerRadius = 8
 ```
 
 ### Dismiss by Drag
