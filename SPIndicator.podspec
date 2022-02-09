@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'SPIndicator'
-  s.version = '1.6.3'
+  s.version = '1.6.4'
   s.summary = 'Floating indicator, mimicrate to indicator which appear when silent mode switched. Can be present from top and bottom.'
   s.homepage = 'https://github.com/ivanvorobei/SPIndicator'
   s.source = { :git => 'https://github.com/ivanvorobei/SPIndicator.git', :tag => s.version }
