@@ -1,9 +1,9 @@
 # SPIndicator
 
 <p aligment="left">
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/animatable-presets.png?version=1" height="180"/>
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/customize.png?version=1" height="180"/>
-    <img src="https://cdn.ivanvorobei.by/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
+    <img src="https://cdn.ivanvorobei.io/github/spindicator/v1.6/animatable-presets.png?version=1" height="180"/>
+    <img src="https://cdn.ivanvorobei.io/github/spindicator/v1.6/customize.png?version=1" height="180"/>
+    <img src="https://cdn.ivanvorobei.io/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
 </p>
 
 Mimicrate for the indicator which appears when silent mode is turned on / off. Availalbe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
@@ -167,6 +167,6 @@ Button("Show Indicator") {
 Я веду [телеграм-канал](https://sparrowcode.io/telegram), там публикую новости и туториалы.<br>
 С проблемой помогут [в чате](https://sparrowcode.io/telegram/chat).
 
-Видео-туториалы выклыдываю на [YouTube](https://ivanvorobei.by/youtube):
+Видео-туториалы выклыдываю на [YouTube](https://ivanvorobei.io/youtube):
 
-[![Tutorials on YouTube](https://cdn.ivanvorobei.by/github/readme/youtube-preview.jpg)](https://ivanvorobei.by/youtube)
+[![Tutorials on YouTube](https://cdn.ivanvorobei.io/github/readme/youtube-preview.jpg)](https://ivanvorobei.io/youtube)
