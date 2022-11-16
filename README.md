@@ -6,7 +6,7 @@
     <img src="https://cdn.ivanvorobei.io/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
 </p>
 
-Mimicrate for the indicator which appears when silent mode is turned on / off. Availalbe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
+Mimicrate for the indicator which appears when silent mode is turned on / off. Availabe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
 
 To get an alert like in Apple music, use this library instead [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
