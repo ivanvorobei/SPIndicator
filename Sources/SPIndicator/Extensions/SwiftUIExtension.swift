@@ -22,7 +22,6 @@
 import SwiftUI
 
 #if os(iOS)
-import UIKit
 @available(iOS 13.0, *)
 @available(iOSApplicationExtension, unavailable)
 
@@ -32,8 +31,7 @@ extension View {
         isPresent: Binding<Bool>,
         indicatorView: SPIndicatorView,
         duration: TimeInterval = 2.0,
-        haptic: SPIndicatorHaptic = .none,
-        presentOn: UIWindow? = nil
+        haptic: SPIndicatorHaptic = .none
     ) -> some View {
         
         if isPresent.wrappedValue {
@@ -43,7 +41,6 @@ extension View {
                 indicatorCompletion?()
             }
             indicatorView.duration = duration
-            indicatorView.presentWindow = presentOn
             indicatorView.present(haptic: haptic, completion: indicatorDismiss)
         }
         return self
@@ -59,8 +56,7 @@ extension View {
         preset: SPIndicatorIconPreset = .done,
         haptic: SPIndicatorHaptic = .none,
         layout: SPIndicatorLayout? = nil,
-        completion: (()-> Void)? = nil,
-        presentOn: UIWindow? = nil
+        completion: (()-> Void)? = nil
     ) -> some View {
         
         let indicatorView = SPIndicatorView(title: title, message: message, preset: preset)
@@ -68,7 +64,6 @@ extension View {
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.layout = layout ??  SPIndicatorLayout(for: preset)
         indicatorView.completion = completion
-        indicatorView.presentWindow = presentOn
         return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     
@@ -80,15 +75,13 @@ extension View {
         dismissByDrag: Bool = true,
         preset: SPIndicatorIconPreset = .done,
         haptic: SPIndicatorHaptic = .none,
-        completion: (()-> Void)? = nil,
-        presentOn: UIWindow? = nil
+        completion: (()-> Void)? = nil
     ) -> some View {
         
         let indicatorView = SPIndicatorView(title: title, preset: preset)
         indicatorView.presentSide = presentSide
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.completion = completion
-        indicatorView.presentWindow = presentOn
         return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     

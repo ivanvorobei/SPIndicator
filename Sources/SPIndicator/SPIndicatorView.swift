@@ -201,15 +201,11 @@ open class SPIndicatorView: UIView {
         return false
     }
     
-    open func present(haptic: SPIndicatorHaptic = .success, presentOn: UIWindow? = nil, completion: (() -> Void)? = nil) {
-        present(duration: self.duration, haptic: haptic, presentOn: presentOn, completion: completion)
+    open func present(haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
+        present(duration: self.duration, haptic: haptic, completion: completion)
     }
     
-    open func present(duration: TimeInterval, haptic: SPIndicatorHaptic = .success, presentOn: UIWindow? = nil, completion: (() -> Void)? = nil) {
-        
-        if presentOn != nil {
-            self.presentWindow = presentOn
-        }
+    open func present(duration: TimeInterval, haptic: SPIndicatorHaptic = .success, completion: (() -> Void)? = nil) {
         
         if self.presentWindow == nil {
             self.presentWindow = UIApplication.shared.keyWindow
