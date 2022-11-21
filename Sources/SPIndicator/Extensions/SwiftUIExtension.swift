@@ -22,7 +22,7 @@
 import SwiftUI
 
 #if os(iOS)
-
+import UIKit
 @available(iOS 13.0, *)
 @available(iOSApplicationExtension, unavailable)
 
@@ -32,7 +32,8 @@ extension View {
         isPresent: Binding<Bool>,
         indicatorView: SPIndicatorView,
         duration: TimeInterval = 2.0,
-        haptic: SPIndicatorHaptic = .none
+        haptic: SPIndicatorHaptic = .none,
+        presentOn: UIWindow? = nil
     ) -> some View {
         
         if isPresent.wrappedValue {
@@ -57,7 +58,8 @@ extension View {
         preset: SPIndicatorIconPreset = .done,
         haptic: SPIndicatorHaptic = .none,
         layout: SPIndicatorLayout? = nil,
-        completion: (()-> Void)? = nil
+        completion: (()-> Void)? = nil,
+        presentOn: UIWindow? = nil
     ) -> some View {
         
         let indicatorView = SPIndicatorView(title: title, message: message, preset: preset)
@@ -76,7 +78,8 @@ extension View {
         dismissByDrag: Bool = true,
         preset: SPIndicatorIconPreset = .done,
         haptic: SPIndicatorHaptic = .none,
-        completion: (()-> Void)? = nil
+        completion: (()-> Void)? = nil,
+        presentOn: UIWindow? = nil
     ) -> some View {
         
         let indicatorView = SPIndicatorView(title: title, preset: preset)
