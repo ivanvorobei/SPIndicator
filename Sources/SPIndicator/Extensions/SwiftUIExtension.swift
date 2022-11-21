@@ -43,6 +43,7 @@ extension View {
                 indicatorCompletion?()
             }
             indicatorView.duration = duration
+            indicatorView.presentWindow = presentOn
             indicatorView.present(haptic: haptic, completion: indicatorDismiss)
         }
         return self
@@ -67,6 +68,7 @@ extension View {
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.layout = layout ??  SPIndicatorLayout(for: preset)
         indicatorView.completion = completion
+        indicatorView.presentWindow = presentOn
         return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     
@@ -86,6 +88,7 @@ extension View {
         indicatorView.presentSide = presentSide
         indicatorView.dismissByDrag = dismissByDrag
         indicatorView.completion = completion
+        indicatorView.presentWindow = presentOn
         return SPIndicator(isPresent: isPresent, indicatorView: indicatorView, duration: duration, haptic: haptic)
     }
     
