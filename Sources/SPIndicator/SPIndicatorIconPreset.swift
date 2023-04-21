@@ -29,7 +29,7 @@ public enum SPIndicatorIconPreset {
     
     case done
     case error
-    
+    case spin(_ style: UIActivityIndicatorView.Style)
     case custom(_ image: UIImage)
 }
 
@@ -46,6 +46,10 @@ public extension SPIndicatorIconPreset {
             let view = SPIndicatorIconErrorView()
             view.tintColor = UIColor.systemRed
             return view
+        case .spin(let style):
+            let view = UIActivityIndicatorView(style: style)
+            view.startAnimating()
+            return view
         case .custom(let image):
             let imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
@@ -57,6 +61,7 @@ public extension SPIndicatorIconPreset {
         switch self {
         case .error: return .error
         case .done: return .success
+        case .spin(_): return .none
         case .custom(_): return .success
         }
     }
@@ -96,6 +101,8 @@ public extension SPIndicatorLayout {
             iconSize = .init(width: 14, height: 14)
             margins.left = 19
             margins.right = margins.left
+        case .spin(_):
+            self.init()
         case .custom(_):
             self.init()
         }

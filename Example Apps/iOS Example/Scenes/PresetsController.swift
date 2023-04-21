@@ -105,6 +105,12 @@ class PresetsController: SPDiffableTableController {
                 preset: .error
             ),
             IndicatorPresetModel(
+                name: "Spin",
+                title: "Spin",
+                message: "Animatable",
+                preset: .spin(.medium)
+            ),
+            IndicatorPresetModel(
                 name: "Custom Image",
                 title: "Custom Image",
                 message: "SFSymbols Image",
