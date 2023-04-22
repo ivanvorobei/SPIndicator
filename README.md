@@ -65,7 +65,7 @@ SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
 
 // For show with custom image:
 let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
+SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image))
 
 // For show text only:
 SPIndicator.present(title: "Error", haptic: .error)
