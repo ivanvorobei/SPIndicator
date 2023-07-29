@@ -32,7 +32,7 @@ public enum SPIndicatorHaptic {
     case none
     
     func impact() {
-        #if os(iOS)
+        #if os(iOS) && !os(visionOS)
         let generator = UINotificationFeedbackGenerator()
         switch self {
         case .success:
