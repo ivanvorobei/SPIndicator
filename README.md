@@ -6,7 +6,7 @@
     <img src="https://cdn.ivanvorobei.io/github/spindicator/v1.6/bottom-present.png?version=1" height="180"/>
 </p>
 
-Mimicrate for the indicator which appears when silent mode is turned on / off. Availalbe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
+Mimicrate for the indicator which appears when silent mode is turned on / off. Availabe 2 animated presets: `done` & `error`.  Also supports custom images and presentations from top, center & bottom sides. 
 
 To get an alert like in Apple music, use this library instead [SPAlert](https://github.com/ivanvorobei/SPAlert).
 
@@ -65,7 +65,7 @@ SPIndicator.present(title: "Error", message: "Try Again", preset: .error)
 
 // For show with custom image:
 let image = UIImage.init(systemName: "sun.min.fill")!.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image)))
+SPIndicator.present(title: "Custom Image", message: "With tint color", preset: .custom(image))
 
 // For show text only:
 SPIndicator.present(title: "Error", haptic: .error)
